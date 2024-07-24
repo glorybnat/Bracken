@@ -1,0 +1,151 @@
+body {
+    font-family: 'Press Start 2P', cursive;
+    color: #fff;
+    background: url('../img/giphy\ \(19\).webp') no-repeat center center/cover;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-attachment: fixed; /* Ensures background doesn't move */
+}
+
+.menu {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px); /* Apply blur effect */
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.menu a:hover {
+    color: #ffcc00;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.rectangle {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px; /* Reduced padding */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 70%; /* Adjust width as needed */
+    max-width: 600px; /* Set a maximum width for large screens */
+    margin: auto;
+    backdrop-filter: blur(10px); /* Added blur effect */
+}
+
+.rectangle h1 {
+    font-size: 24px; /* Reduced font size */
+    margin-bottom: 15px; /* Adjusted margin */
+    text-align: center;
+}
+
+.rectangle label {
+    display: block;
+    font-size: 14px;
+    margin: 8px 0 4px; /* Adjusted margin */
+}
+
+.rectangle input {
+    width: calc(100% - 22px); /* Adjust for padding and border */
+    padding: 8px; /* Reduced padding */
+    margin-bottom: 12px; /* Reduced margin-bottom */
+    border: 1px solid #444;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    box-sizing: border-box;
+}
+
+.gender-options {
+    display: flex;
+    align-items: center; /* Align items vertically */
+    margin-bottom: 8px; /* Adjust space below the gender options */
+}
+
+.gender-options input {
+    margin-right: 4px; /* Space between radio button and label */
+}
+
+.gender-options label {
+    margin: 0; /* Remove any default margin */
+}
+
+/* Ensure button is aligned correctly and adjust spacing */
+.rectangle button {
+    width: calc(100% - 22px); /* Same width as input fields */
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #444;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    box-sizing: border-box;
+    font-family: 'Press Start 2P', cursive;
+    margin-top: 0; /* Ensure no additional margin at the top */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+    text-shadow: 1px 1px 3px #000;
+}
+
+.rectangle button:hover {
+    background: #555;
+}
+
+/* Adjust the register-link spacing */
+.rectangle .register-link {
+    margin-top: 8px; /* Adjusted margin */
+    text-align: center;
+}
+
+.rectangle .register-link p {
+    font-size: 12px;
+    margin-bottom: 4px; /* Adjusted margin */
+}
+
+.rectangle .register-button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background: #555;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    font-family: 'Press Start 2P', cursive;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+}
+
+.rectangle .register-button:hover {
+    background: #666;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    color: #fff;
+    position: relative;
+    margin-top: 20px;
+    font-size: 10px;
+}
