@@ -1,26 +1,25 @@
 body {
-    position: relative;
-    min-height: 100vh;
-    background: url('../img/giphy\ \(12\).webp') no-repeat center center/cover;
-    color: #fff;
-    text-align: center;
-    z-index: 1;
-    overflow-x: hidden;
-    overflow-y: auto;
-    text-shadow: 2px 2px 5px #181414;
     font-family: 'Press Start 2P', cursive;
+    color: #fff;
+    background: url('../img/giphy\ \(17\).webp') no-repeat center center/cover;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #000;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-attachment: fixed; /* Ensures background doesn't move */
 }
 
 .menu {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    text-align: right;
-    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px); /* Apply blur effect */
 }
 
 .menu a {
@@ -28,41 +27,53 @@ body {
     text-decoration: none;
     margin-left: 20px;
     font-size: 14px;
+    transition: color 0.3s ease;
 }
 
-.title {
-    font-size: 22px;
-    margin-top: 20px;
-    margin-bottom: 50px; /* Add margin to separate from the content */
+.menu a:hover {
+    color: #ffcc00;
 }
 
 .about-container {
     display: flex;
-    justify-content: space-between;
-    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
     max-width: 1200px;
-    margin: 20px auto;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.8);
+    margin: 20px auto; /* Margin creates space above and below */
+    background: rgba(0, 0, 0, 0.85);
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    flex-grow: 1;
+    backdrop-filter: blur(10px); /* Apply blur effect */
 }
 
 .left-side, .right-side {
-    width: 45%;
-    text-align: center; /* Center-align text and titles */
+    width: 100%;
+    max-width: 600px;
+    text-align: left;
     padding: 20px;
 }
 
-.left-side h1, .right-side h1, .left-side h2, .right-side h2, .left-side h3, .right-side h3 {
+h1, h2, h3 {
     color: #ffcc00;
     text-shadow: 2px 2px 5px #181414;
-    margin: 0; /* Remove default margins */
-    padding-bottom: 10px; /* Space between titles and paragraphs */
+    margin-bottom: 20px;
 }
 
-.left-side p, .right-side p {
-    margin: 20px 0; /* Margin between paragraphs */
-    font-size: 12px;
-    line-height: 1.5;
+p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    color: #fff;
+    position: relative;
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    margin-top: 20px; /* Margin creates space above the footer */
 }
