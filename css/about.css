@@ -1,0 +1,68 @@
+body {
+    position: relative;
+    min-height: 100vh;
+    background: url('../img/giphy\ \(12\).webp') no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+    z-index: 1;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-shadow: 2px 2px 5px #181414;
+    font-family: 'Press Start 2P', cursive;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #000;
+}
+
+.menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    text-align: right;
+    width: 100%;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+.title {
+    font-size: 22px;
+    margin-top: 20px;
+    margin-bottom: 50px; /* Add margin to separate from the content */
+}
+
+.about-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.left-side, .right-side {
+    width: 45%;
+    text-align: center; /* Center-align text and titles */
+    padding: 20px;
+}
+
+.left-side h1, .right-side h1, .left-side h2, .right-side h2, .left-side h3, .right-side h3 {
+    color: #ffcc00;
+    text-shadow: 2px 2px 5px #181414;
+    margin: 0; /* Remove default margins */
+    padding-bottom: 10px; /* Space between titles and paragraphs */
+}
+
+.left-side p, .right-side p {
+    margin: 20px 0; /* Margin between paragraphs */
+    font-size: 12px;
+    line-height: 1.5;
+}

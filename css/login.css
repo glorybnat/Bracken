@@ -1,0 +1,116 @@
+body {
+    position: relative;
+    height: 100vh;
+    background: url('../img/giphy\ \(17\).webp') no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 1;
+    overflow: hidden;
+    text-shadow: 2px 2px 5px #181414;
+    font-family: 'Press Start 2P', cursive;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #000;
+}
+
+.menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    text-align: right;
+    width: 100%;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+.login-container {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    width: 100%;
+    margin: auto;
+    backdrop-filter: blur(10px); /* Added blur effect */
+}
+
+.login-container h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.login-container label {
+    display: block;
+    font-size: 14px;
+    margin: 10px 0 5px;
+}
+
+.login-container input {
+    width: calc(100% - 22px); /* Adjust for padding and border */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    box-sizing: border-box;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #444;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.login-container button:hover {
+    background: #555;
+}
+
+.register-link {
+    margin-top: 15px; /* Adjusted margin */
+}
+
+.register-link p {
+    font-size: 12px; /* Smaller font size */
+    margin-bottom: 5px; /* Adjusted margin */
+}
+
+.register-button {
+    display: inline-block;
+    padding: 8px 15px; /* Smaller padding */
+    border: none;
+    border-radius: 5px;
+    background: #555;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px; /* Smaller font size */
+    cursor: pointer;
+}
+
+.register-button:hover {
+    background: #666;
+}
+
+.footer {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 10px;
+}
