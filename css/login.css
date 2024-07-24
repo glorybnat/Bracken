@@ -67,7 +67,7 @@ body {
 }
 
 .login-container button {
-    width: 100%;
+    width: calc(100% - 22px); /* Same width as input fields */
     padding: 10px;
     border: none;
     border-radius: 5px;
@@ -76,6 +76,10 @@ body {
     font-size: 16px;
     cursor: pointer;
     box-sizing: border-box;
+    font-family: 'Press Start 2P', cursive; /* Ensure button uses the same font */
+    margin: 0; /* Ensure no additional margin */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); /* Added shadow effect */
+    text-shadow: 1px 1px 3px #000; /* Added text shadow */
 }
 
 .login-container button:hover {
@@ -93,14 +97,16 @@ body {
 
 .register-button {
     display: inline-block;
-    padding: 8px 15px; /* Smaller padding */
+    padding: 10px 20px; /* Match padding with input fields */
     border: none;
     border-radius: 5px;
     background: #555;
     color: #fff;
     text-decoration: none;
-    font-size: 14px; /* Smaller font size */
+    font-size: 16px; /* Match font size with button */
     cursor: pointer;
+    font-family: 'Press Start 2P', cursive; /* Ensure button uses the same font */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); /* Added shadow effect */
 }
 
 .register-button:hover {
