@@ -1,7 +1,7 @@
 body {
     position: relative;
     height: 100vh;
-    background: url('../img/giphy\ \(19\).webp') no-repeat center center/cover;
+    background: url('../img/giphy\ \(17\).webp') no-repeat center center/cover;
     color: #fff;
     text-align: center;
     display: flex;
@@ -18,20 +18,12 @@ body {
     background-color: #000;
 }
 
-header {
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    backdrop-filter: blur(10px); /* Apply blur effect */
-    text-align: right;
-}
-
 .menu {
-    display: flex;
-    justify-content: flex-end;
-    padding: 20px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    text-align: right;
+    width: 100%;
 }
 
 .menu a {
@@ -39,25 +31,16 @@ header {
     text-decoration: none;
     margin-left: 20px;
     font-size: 14px;
-    transition: color 0.3s ease;
 }
 
-.menu a:hover {
-    color: #ffcc00;
-}
-
-main {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
+.logo {
+    font-size: 100px;
+    line-height: 100px;
 }
 
 .title {
     font-size: 22px;
-    text-shadow: 2px 2px 5px #181414;
+    margin-top: 20px;
 }
 
 .footer {
