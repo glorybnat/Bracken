@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,20 +8,70 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link href="css/Home.css" rel="stylesheet">
 </head>
+
 <body>
     <div class="menu">
-        <a href="Home.html">Home</a>
-        <a href="about.html">About us</a>
-        <a href="blog.html">Blog</a>
-        <a href="writeups.html">Write ups</a>
-        <a href="courses.html">Courses</a>
-        <a href="ctf.html">CTF</a>
-        <a href="#">Join Us</a>
-        <a href="login.html">Login</a>
-    </div>
-        <div class="title">
-            Welcome to Br4cken <br> 
+        <div class="logo">
+            <a href="Home.html">Br4cken</a>
+        </div>
+        <div class="menu-links">
+            <a href="Home.html">Home</a>
+            <a href="about.html">About us</a>
+            <a href="blog.html">Blog</a>
+            <a href="writeups.html">Write ups</a>
+            <a href="courses.html">Courses</a>
+            <a href="ctf.html">CTF</a>
+            <a href="#">Join Us</a>
+            <a href="login.html">Login</a>
+        </div>
+        <div class="burger-menu">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
         </div>
     </div>
+    <div class="title">
+        Welcome to Br4cken <br>
+    </div>
+    
+        <div class="posts-container">
+            <!-- Example of 6 posts -->
+            <div class="post" data-title="Post 1">
+                <img src="img/b.png" alt="Post 1">
+            </div>
+            <div class="post" data-title="Post 2">
+                <img src="img/b.png" alt="Post 2">
+            </div>
+            <div class="post" data-title="Post 3">
+                <img src="img/b.png" alt="Post 3">
+            </div>
+            <div class="post" data-title="Post 4">
+                <img src="path/to/image4.jpg" alt="Post 4">
+            </div>
+            <div class="post" data-title="Post 5">
+                <img src="path/to/image5.jpg" alt="Post 5">
+            </div>
+            <div class="post" data-title="Post 6">
+                <img src="path/to/image6.jpg" alt="Post 6">
+            </div>
+        </div>
+
+
+    <footer class="footer">
+        © 2024 Bracken. All rights reserved.
+    </footer>
+
+    <script>
+        document.querySelector('.burger-menu').addEventListener('click', function () {
+            document.querySelector('.menu-links').classList.toggle('active');
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(function () {
+                document.body.classList.add('loaded');
+            }, 500); // Delay to show the scroll animation
+        });
+    </script>
 </body>
+
 </html>
