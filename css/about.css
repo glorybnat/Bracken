@@ -1,51 +1,130 @@
+/* General Styles */
 body {
     font-family: 'Press Start 2P', cursive;
     color: #fff;
-    background: url('../img/giphy\ \(17\).webp') no-repeat center center/cover;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background-attachment: fixed; /* Ensures background doesn't move */
+    background-color: black;
+    position: relative;
+    overflow-x: hidden;
 }
 
+/* Background Image with Grayscale */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../img/gg.webp') no-repeat center center/cover;
+    filter: grayscale(100%);
+    z-index: -1;
+    background-attachment: fixed;
+    transition: background-position 0.5s ease; /* Smooth transition effect */
+}
+
+/* Navbar Styles */
 .menu {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     padding: 20px;
     background-color: rgba(0, 0, 0, 0.8);
     position: sticky;
     top: 0;
     z-index: 1000;
-    backdrop-filter: blur(10px); /* Apply blur effect */
+    backdrop-filter: blur(10px);
 }
 
-.menu a {
+.menu-links {
+    display: flex;
+    gap: 20px;
+}
+
+.menu-links a {
     color: white;
     text-decoration: none;
-    margin-left: 20px;
     font-size: 14px;
     transition: color 0.3s ease;
 }
 
-.menu a:hover {
+.menu-links a:hover {
     color: #ffcc00;
 }
 
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.burger-menu .line {
+    height: 3px;
+    background: #fff;
+    border-radius: 2px;
+}
+
+/* Responsive Styles */
+@media (max-width: 1080px) {
+    .menu {
+        justify-content: space-between;
+    }
+
+    .menu-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background-color: rgba(0, 0, 0, 0.9);
+        border-radius: 10px;
+        padding: 10px;
+        width: 200px;
+        text-align: right;
+    }
+
+    .menu-links.active {
+        display: flex;
+    }
+
+    .burger-menu {
+        display: flex;
+    }
+
+    /* Shift background to the right */
+    body::before {
+        background-position: right center;
+    }
+}
+
+@media (max-width: 1080px) {
+    /* Shift background further right for very small screens */
+    body::before {
+        background-position: 100% center;
+    }
+}
+
+/* Main Content Container */
 .about-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 40px 20px;
     max-width: 1200px;
-    margin: 20px auto; /* Margin creates space above and below */
+    margin: 20px auto;
     background: rgba(0, 0, 0, 0.85);
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     flex-grow: 1;
-    backdrop-filter: blur(10px); /* Apply blur effect */
+    backdrop-filter: blur(10px);
 }
 
 .left-side, .right-side {
@@ -67,6 +146,7 @@ p {
     margin-bottom: 20px;
 }
 
+/* Footer */
 footer {
     background-color: rgba(0, 0, 0, 0.8);
     text-align: center;
@@ -74,6 +154,6 @@ footer {
     width: 100%;
     color: #fff;
     position: relative;
-    backdrop-filter: blur(10px); /* Apply blur effect */
-    margin-top: 20px; /* Margin creates space above the footer */
+    backdrop-filter: blur(10px);
+    margin-top: 20px;
 }

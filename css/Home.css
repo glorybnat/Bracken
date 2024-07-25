@@ -1,56 +1,256 @@
+/* General Styles */
 body {
-    position: relative;
-    height: 100vh;
-    background: url('../img/giphy\ \(17\).webp') no-repeat center center/cover;
-    color: #fff;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    z-index: 1;
-    overflow: hidden;
-    text-shadow: 2px 2px 5px #181414;
     font-family: 'Press Start 2P', cursive;
+    color: #fff;
     margin: 0;
+    display: grid;
     padding: 0;
     box-sizing: border-box;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
     background-color: #000;
+    font-size: 1rem;
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
-.menu {
+/* Background Image with Grayscale */
+body::before {
+    content: '';
     position: absolute;
-    top: 20px;
-    right: 20px;
-    text-align: right;
-    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../img/gg.webp') no-repeat center center/cover;
+    filter: grayscale(100%);
+    z-index: -1;
+    background-attachment: fixed;
+    transition: background-position 0.5s ease;
 }
 
-.menu a {
+/* Navbar Styles */
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 0.625rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    width: calc(100% - 20px);
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    box-sizing: border-box;
+}
+
+.logo a {
     color: white;
     text-decoration: none;
-    margin-left: 20px;
-    font-size: 14px;
+    font-size: 1.125rem;
+    padding-left: 10px;
 }
 
-.logo {
-    font-size: 100px;
-    line-height: 100px;
+.menu-links {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+    padding-right: 10px;
+}
+
+.menu-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: color 0.3s ease;
+}
+
+.menu-links a:hover {
+    color: #ffcc00;
+}
+
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 1.5625rem;
+    height: 1.25rem;
+    cursor: pointer;
+    padding-right: 10px;
+}
+
+.burger-menu .line {
+    height: 0.1875rem;
+    background: #fff;
+    border-radius: 2px;
+}
+
+@media (max-width: 1080px) {
+    .menu-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 3.75rem;
+        right: 10px;
+        background-color: rgba(0, 0, 0, 0.9);
+        border-radius: 10px;
+        padding: 10px;
+        width: calc(12.5rem - 10px);
+        text-align: right;
+    }
+
+    .menu-links.active {
+        display: flex;
+    }
+
+    .burger-menu {
+        display: flex;
+    }
+
+    body::before {
+        background-position: right center;
+    }
+
+    .logo a {
+        font-size: 1rem;
+    }
+
+    .menu-links a {
+        font-size: 0.75rem;
+    }
+
+    .burger-menu {
+        width: 1.25rem;
+        height: 1rem;
+    }
+
+    .burger-menu .line {
+        height: 0.125rem;
+    }
+}
+
+@media (max-width: 1080px) {
+    body::before {
+        background-position: 100% center;
+    }
+
+    .title {
+        font-size: 1rem;
+    }
+
+    .logo a {
+        font-size: 0.875rem;
+    }
+
+    .menu-links a {
+        font-size: 0.625rem;
+    }
 }
 
 .title {
-    font-size: 22px;
-    margin-top: 20px;
-}
-
-.footer {
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
+    font-size: 1.375rem;
+    margin-top: 26.5rem; /* Adjust to account for fixed navbar */
     text-align: center;
-    font-size: 10px;
+    z-index: 2;
+    text-shadow: 2px 2px 5px #181414;
 }
 
-p {
-    cursor: pointer;
+/* Posts Grid */
+.posts-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1.25rem;
+    padding: 1.25rem;
+    width: calc(100% - 20px); /* 10px padding on each side */
+    box-sizing: border-box;
+    margin-top: 55vh; /* Adjust for space between title and posts */
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: top 0.5s ease;
+    min-height: calc(100vh - 60px); /* Adjust for footer height */
+}
+
+.post {
+    background-color: rgba(255, 255, 255, 0.1);
+    width: 100%;
+    padding-top: 100%; /* Square aspect ratio */
+    position: relative;
+    border-radius: 10px; /* Slightly rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow effect */
+    overflow: hidden; /* Ensure images don't overflow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover animation */
+}
+
+.post img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure images cover the entire post area */
+    border-radius: 10px;
+}
+
+.post::before {
+    content: attr(data-title);
+    position: absolute;
+    bottom: 10px; /* Adjusted for title at bottom */
+    left: 10px; /* Title on the left side */
+    background: rgba(0, 0, 0, 0.6);
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s ease; /* Smooth hover animation */
+    z-index: 2; /* Ensure title is above the image */
+}
+
+.post:hover::before {
+    opacity: 1;
+}
+
+.post:hover {
+    transform: translateY(-10px); /* Lift up effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Enhanced shadow */
+}
+
+body.loaded .posts-container {
+    margin-top: 40vh; /* Adjusted to ensure upper half of posts are visible */
+    transition: opacity 0.5s ease-in, margin-top 1s ease-in-out;
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    color: #fff;
+    font-size: 10px;
+    backdrop-filter: blur(10px);
+    margin-top: 10px;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+@media (max-width: 1280px) {
+    .posts-container{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 860px) {
+    .posts-container{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
