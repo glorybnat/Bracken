@@ -10,14 +10,21 @@
 <body>
     <header>
         <nav class="menu">
-            <a href="Home.html">Home</a>
-            <a href="about.html">About us</a>
-            <a href="blog.html">Blog</a>
-            <a href="writeups.html">Write ups</a>
-            <a href="courses.html">Courses</a>
-            <a href="ctf.html">CTF</a>
-            <a href="#">Join Us</a>
-            <a href="login.html">Login</a>
+            <div class="burger-menu" id="burger-menu">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <div class="menu-links" id="menu-links">
+                <a href="Home.html">Home</a>
+                <a href="about.html">About us</a>
+                <a href="blog.html">Blog</a>
+                <a href="writeups.html">Write ups</a>
+                <a href="courses.html">Courses</a>
+                <a href="ctf.html">CTF</a>
+                <a href="#">Join Us</a>
+                <a href="login.html">Login</a>
+            </div>
         </nav>
     </header>
 
@@ -47,5 +54,14 @@
     <footer>
         <p>&copy; 2024 Bracken Team. All rights reserved.</p>
     </footer>
+
+    <script>
+        const burgerMenu = document.getElementById('burger-menu');
+        const menuLinks = document.getElementById('menu-links');
+
+        burgerMenu.addEventListener('click', () => {
+            menuLinks.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
