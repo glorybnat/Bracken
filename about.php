@@ -1,3 +1,8 @@
+<?php
+session_start();
+$username = $_SESSION['username'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,14 +21,20 @@
                 <div class="line"></div>
             </div>
             <div class="menu-links" id="menu-links">
-                <a href="Home.html">Home</a>
-                <a href="about.html">About us</a>
-                <a href="blog.html">Blog</a>
-                <a href="writeups.html">Write ups</a>
-                <a href="courses.html">Courses</a>
-                <a href="ctf.html">CTF</a>
+                <a href="index.php">Home</a>
+                <a href="about.php">About us</a>
+                <a href="blog.php">Blog</a>
+                <a href="writeups.php">Write ups</a>
+                <a href="courses.php">Courses</a>
+                <a href="ctf.php">CTF</a>
                 <a href="#">Join Us</a>
-                <a href="login.html">Login</a>
+                <a> <?php
+                    if ($_SESSION['loggedin'] !== true){
+                        echo "<a href=\"login.php\">Login</a>";
+                    }else{
+                        echo "<a href='profile.php'>$username</a>";
+                    }
+                    ?> </a>
             </div>
         </nav>
     </header>
