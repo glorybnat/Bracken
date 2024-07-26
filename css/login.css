@@ -120,3 +120,48 @@ body {
     text-align: center;
     font-size: 10px;
 }
+
+/* Container for gender buttons to match input fields width */
+.gender-container {
+    width: calc(100% - 22px); /* Same as input fields */
+    margin: 15px; /* Center and space */
+    display: flex;
+    justify-content: center;
+}
+
+/* Styling for the gender buttons */
+.gender-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10px;
+    width: 95%;
+}
+
+.gender-label {
+    display: inline-block;
+    width: calc(50% - 10px); /* Half the width minus margin */
+    margin: 0 2px; /* Space between buttons */
+    padding: 10px 0; /* Center the text and adjust height */
+    border-radius: 10px;
+    border: 2px solid #444;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+    font-family: 'Press Start 2P', cursive;
+}
+
+/* Hover and active states */
+.gender-label:hover {
+    background-color: #555;
+}
+
+.gender-buttons input[type="radio"] {
+    display: none;
+}
+
+.gender-buttons input[type="radio"]:checked + .gender-label {
+    background-color: #444;
+    border-color: #fff;
+}
