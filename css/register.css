@@ -1,0 +1,170 @@
+.login-container {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  max-width: 400px;
+  width: 100%;
+  margin: auto;
+  backdrop-filter: blur(10px); /* Added blur effect */
+}
+
+.login-container h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.login-container label {
+  display: block;
+  font-size: 14px;
+  margin: 10px 0 5px;
+}
+
+.login-container input {
+  width: calc(100% - 22px); /* Adjust for padding and border */
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  box-sizing: border-box;
+}
+
+.login-container button {
+  width: calc(100% - 22px); /* Same width as input fields */
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background: #000000b3;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  box-sizing: border-box;
+  font-family: 'Press Start 2P', cursive; /* Ensure button uses the same font */
+  margin: 0; /* Ensure no additional margin */
+  margin-bottom: 5px;
+  box-shadow: 0 0px 0px rgba(255, 255, 255, 0.7); /* Added shadow effect */
+  text-shadow: 1px 1px 3px #000; /* Added text shadow */
+  position: relative; /* Required for pseudo-elements */
+  z-index: 0;
+}
+
+.login-container button:before {
+  content: '';
+  background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(4px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+  border-radius: 5px;
+}
+
+.login-container button:hover:before {
+  opacity: 0.7;
+}
+
+.login-container button:after {
+  z-index: -1;
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(55, 55, 55);
+  left: 0;
+  top: 0;
+  border-radius: 5px;
+}
+
+@keyframes glowing {
+  0% { background-position: 0 0; }
+  50% { background-position: 400% 0; }
+  100% { background-position: 0 0; }
+}
+
+.register-link {
+  margin-top: 15px; /* Adjusted margin */
+}
+
+.register-link p {
+  font-size: 12px; /* Smaller font size */
+  margin-bottom: 5px; /* Adjusted margin */
+}
+
+.register-button {
+  display: inline-block;
+  padding: 10px 20px; /* Match padding with input fields */
+  border: none;
+  border-radius: 5px;
+  background-color: rgb(55, 55, 55);
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px; /* Match font size with button */
+  cursor: pointer;
+  font-family: 'Press Start 2P', cursive; /* Ensure button uses the same font */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7); /* Added shadow effect */
+}
+
+.register-button:hover {
+  background: #666;
+}
+
+.footer {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 10px;
+}
+
+/* Container for gender buttons to match input fields width */
+.gender-container {
+  width: calc(100% - 22px); /* Same as input fields */
+  margin: 15px; /* Center and space */
+  display: flex;
+  justify-content: center;
+}
+
+/* Styling for the gender buttons */
+.gender-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10px;
+  width: 95%;
+}
+
+.gender-label {
+  display: inline-block;
+  width: calc(50% - 10px); /* Half the width minus margin */
+  margin: 0 2px; /* Space between buttons */
+  padding: 10px 0; /* Center the text and adjust height */
+  border-radius: 10px;
+  border: 2px solid #444;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+  font-family: 'Press Start 2P', cursive;
+}
+
+/* Hover and active states */
+.gender-label:hover {
+  background-color: #555;
+}
+
+.gender-buttons input[type="radio"] {
+  display: none;
+}
+
+.gender-buttons input[type="radio"]:checked + .gender-label {
+  background-color: #444;
+  border-color: #fff;
+}
