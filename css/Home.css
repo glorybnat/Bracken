@@ -25,7 +25,7 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('../img/gg.webp') no-repeat center center/cover;
+    background: url('../img/Home_page_cover.webp') no-repeat center center/cover;
     filter: grayscale(100%);
     z-index: -1;
     background-attachment: fixed;
@@ -198,7 +198,10 @@ body::before {
     position: absolute;
     bottom: 10px; /* Adjusted for title at bottom */
     left: 10px; /* Title on the left side */
-    background: rgba(0, 0, 0, 0.6);
+    right: 10px;
+    font-weight: lighter;
+    line-height: 110%;
+    background: rgba(0, 0, 0, 0.8);
     padding: 5px 10px;
     border-radius: 5px;
     color: #fff;

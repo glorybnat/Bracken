@@ -21,16 +21,16 @@ $username = $_SESSION['username'];
         <a href="courses.php">Courses</a>
         <a href="ctf.php">CTF</a>
         <a href="#">Join Us</a>
-        <a> <?php
+        <?php
             if ($_SESSION['loggedin'] !== true){
                 echo "<a href=\"login.php\">Login</a>";
             }else{
                 echo "<a href='profile.php'>$username</a>";
             }
-            ?> </a>
+            ?>
     </div>
         <div class="title">
-            Comming soon :) <br> 
+            Comming soon :) <br>
         </div>
     </div>
 </body>
