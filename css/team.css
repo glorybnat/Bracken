@@ -3,8 +3,11 @@
 }
 
 .container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
   margin: auto;
-
+  padding: 1rem;
 }
 
 .profile-wrapper {
@@ -46,6 +49,7 @@
   height: 100%;
   width: 100%;
   object-fit: cover;
+
 }
 
 .profile:hover img {
@@ -60,9 +64,14 @@
 
 }
 
+.profile .profile-bio{
+  font-family: 'Candara', cursive;
+  font-size: medium;
+  margin-right: 20px;
+  font-weight: bolder;
+}
 .profile:hover .profile-bio {
   opacity: 0.9;
-
 }
 
 .social-icons {
@@ -141,6 +150,7 @@
   width: 100%;
   height: 7rem;
   padding: 0.75rem 0.875rem;
+  font-size: large;
   z-index: 1;
   color: #333;
   background-color: #fff;
@@ -158,4 +168,8 @@
 .profile-name h2,.profile-name div{
   font-size: x-small;
   bottom: -200px;
+}
+
+img{
+  filter: grayscale(100%);
 }
