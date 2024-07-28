@@ -101,13 +101,13 @@ if ($_SESSION['verify edit'] !== true){
             <form method="post">
                 <span class="modal-close" id="modal-close">&times;</span>
                 <h2>Edit Profile</h2>
-                <input type="text" name="username" id="edit-username" placeholder="Username" value="<?php echo $old_username?>" required>
                 <input type="text" name="name" id="edit-name" placeholder="Full Name" value="<?php echo $old_name?>" required>
+                <input type="text" name="username" id="edit-username" placeholder="Username" value="<?php echo $old_username?>" required>
                 <!-- <input type="text" name="edit-bio" id="edit-bio" placeholder="Bio"> -->
-                <input type="email" name="email" id="edit-email" placeholder="Email" value="<?php echo $old_email?>" required>
                 <input type="tel" name="phone" id="edit-phone" placeholder="Phone Number" value="<?php echo $old_phone?>" required>
-                <input type="password" name="password" id="edit-pass" placeholder="New Password" required>
-                <button type="submit" value="Save" id="save-button">Save</button>
+                <button>Edit Email</button>
+                <button>Edit Password</button>
+                <button type="submit" value="Save" id="save-button" class="save-button">Save</button>
             </form>
         </div>
     </div>
@@ -148,9 +148,6 @@ if ($_SESSION['verify edit'] !== true){
                 editModal.style.display = 'none';
             }
         });
-
-
-
     </script>
 </body>
 
