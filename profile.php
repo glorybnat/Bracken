@@ -67,7 +67,6 @@ $pdo = new PDO('mysql:host=localhost;port=3306;dbname=bracken', 'root', '');
         <div class="menu-links">
             <a href="index.php">Home</a>
             <a href="aboutus.php">About us</a>
-            <a href="blog.html">Blog</a>
             <a href="writeups.php">Write ups</a>
             <a href="courses.php">Courses</a>
             <a href="ctf.php">CTF</a>
