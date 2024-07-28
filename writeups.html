@@ -14,20 +14,29 @@ session_start();
 </head>
 <body>
     <div class="menu">
-        <a href="index.php">Home</a>
-        <a href="about.php">About us</a>
-        <a href="blog.html">Blog</a>
-        <a href="writeups.php">Write ups</a>
-        <a href="courses.php">Courses</a>
-        <a href="ctf.php">CTF</a>
-        <a href="#">Join Us</a>
-        <a> <?php
-            if (isset($_SESSION['name'])){
-                echo "<a href=\"profile.php\">$username</a>";
-            }else{
-                echo "<a href='login.php'>Login</a>";
-            }
-            ?> </a>
+        <div class="logo">
+            <a href="Home.html">Br4cken</a>
+        </div>
+        <div class="menu-links">
+            <a href="index.php">Home</a>
+            <a href="about.php">About us</a>
+            <a href="writeups.php">Write ups</a>
+            <a href="courses.php">Courses</a>
+            <a href="ctf.php">CTF</a>
+            <a href="#">Join Us</a>
+            <a> <?php
+                if (isset($_SESSION['name'])){
+                    echo "<a href=\"profile.php\">$username</a>";
+                }else{
+                    echo "<a href='login.php'>Login</a>";
+                }
+            ?>
+        </div>
+        <div class="burger-menu">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
     </div>
 
     <div class="writeups-container">
