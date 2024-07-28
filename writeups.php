@@ -1,13 +1,13 @@
 <?php
 session_start();
 @$username = $_SESSION['username'];
-$pdo = new PDO('mysql:host=localhost;port=3306;dbname=bracken', 'root', '');
-$select = $pdo->query("SELECT * FROM writeup ");
-$row = $select->fetch(PDO::FETCH_ASSOC);
-$title = $row['title'];
-$link = $row['link'];
-$picture = $row['picture'];
-$name = $row['name'];
+// Database connection
+$conn = mysqli_connect("localhost", "root", "", "bracken");
+
+// Fetch data from the writeup table
+$query = "SELECT name, title, link, picture FROM writeup";
+$result = mysqli_query($conn, $query);
+
 ?>
 
 <!DOCTYPE html>
@@ -45,20 +45,38 @@ $name = $row['name'];
             <div class="line"></div>
         </div>
     </div>
-    <a style="margin-top: 100px" href="writeups_admin.php"><button>Write ups management</button></a>
+    <?php
+    if (@$_SESSION['admin'] === true){
+        echo '<a style="margin-top: 100px" href="writeups_admin.php"><button>Write ups management</button></a>';
+    }
+    ?>
     <div class="writeups-container">
+        <?php
+        // Check if there are results
+        if (mysqli_num_rows($result) > 0) {
+        // Loop through each row and display the data
+            while($row = mysqli_fetch_assoc($result)) {
+                $name = htmlspecialchars($row['name'], ENT_QUOTES, 'UTF-8');
+                $title = htmlspecialchars($row['title'], ENT_QUOTES, 'UTF-8');
+                $link = htmlspecialchars($row['link'], ENT_QUOTES, 'UTF-8');
+                $picture = htmlspecialchars($row['picture'], ENT_QUOTES, 'UTF-8');
+        ?>
         <div class="writeup-box">
-            <?php
-            foreach ($row as $k => $v){
-            ?>
-            <img src="<?php echo htmlspecialchars($picture, ENT_QUOTES, 'UTF-8'); ?>" alt="Writeup 1">
+
+            <img src="img/<?php echo $picture; ?>" alt="<?php echo $title; ?>">
             <div class="writeup-content">
                 <h3><?php echo $title ?></h3>
                 <p>Author: <?php echo $name?></p>
-                <a href="<?php echo htmlspecialchars($link, ENT_QUOTES, 'UTF-8'); ?>" target="_blank" class="read-more-button">Read more</a>
-                <?php } ?>
+                <a href="<?php echo $link; ?>" target="_blank" class="read-more-button">Read more</a>
+
             </div>
         </div>
+        <?php
+        }
+        } else {
+            echo "<p>No write ups in database</p>";
+        }
+        ?>
         <!-- Add more writeup boxes as needed -->
     </div>
 

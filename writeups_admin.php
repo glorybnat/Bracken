@@ -1,60 +1,73 @@
 <?php
 session_start();
+if ($_SESSION['loggedin'] !== true) {
+    header('Location: writeup.php');
+}
+if ($_SESSION['admin'] !== true) {
+    header('Location: writeup.php');
+}
+// Database connection
+$conn = mysqli_connect("localhost", "root", "", "bracken");
 
-$pdo = new PDO('mysql:host=localhost;port=3306;dbname=bracken', 'root', '');
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $title = $_POST['title'];
-    $link = $_POST['link'];
+if(isset($_POST["submit"])){
+    $title = $_POST["title"];
+    $link = $_POST["link"];
     $name = $_SESSION['name'];
-    if (isset($_FILES['picture']) && $_FILES['picture']['error'] == UPLOAD_ERR_OK) {
-        $uploadDir = 'uploads/';
-        $fileName = basename($_FILES['picture']['name']);
-        $uploadFile = $uploadDir . $fileName;
+    if($_FILES["image"]["error"] == 4){
+        echo "<script> alert('Image Does Not Exist'); </script>";
+    }
+    else{
+        $fileName = $_FILES["image"]["name"];
+        $fileSize = $_FILES["image"]["size"];
+        $tmpName = $_FILES["image"]["tmp_name"];
 
-        // Check if the upload directory exists, if not, create it
-        if (!is_dir($uploadDir)) {
-            mkdir($uploadDir, 0777, true);
+        $validImageExtension = ['jpg', 'jpeg', 'png'];
+        $imageExtension = explode('.', $fileName);
+        $imageExtension = strtolower(end($imageExtension));
+        if (!in_array($imageExtension, $validImageExtension)){
+            echo "<script> alert('Invalid Image Extension'); </script>";
         }
+        else if($fileSize > 1000000){
+            echo "<script> alert('Image Size Is Too Large'); </script>";
+        }
+        else{
+            $newImageName = uniqid() . '.' . $imageExtension;
+            move_uploaded_file($tmpName, 'img/' . $newImageName);
 
-        // Move the uploaded file to the server's upload directory
-        if (move_uploaded_file($_FILES['picture']['tmp_name'], $uploadFile)) {
-            // Prepare and execute the SQL statement to insert the data into the database
-            $stmt = $pdo->prepare("INSERT INTO writeup (title, link, picture, name) VALUES (:title, :link, :picture, :name)");
-            $stmt->bindParam(':title', $title, PDO::PARAM_STR);
-            $stmt->bindParam(':link', $link, PDO::PARAM_STR);
-            $stmt->bindParam(':picture', $uploadFile, PDO::PARAM_STR);
-            $stmt->bindParam(':name', $name, PDO::PARAM_STR);
-            $stmt->execute();
-            echo "Write-up added successfully!";
-        } else {
-            echo "Failed to upload picture.";
+            // Prepare an SQL statement
+            $stmt = $conn->prepare("INSERT INTO writeup (name, title, link, picture) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("ssss", $name, $title, $link, $newImageName);
+
+            if ($stmt->execute()) {
+                echo "<script> alert('Successfully Added UwU'); document.location.href = 'writeups.php'; </script>";
+            } else {
+                echo "<script> alert('Database error: Could not insert data.'); </script>";
+            }
+
+            $stmt->close();
         }
-    } else {
-        echo "No picture uploaded or an error occurred.";
     }
 }
-
-
+$conn->close();
 ?>
-<html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
 <head>
-    <title> Write ups management</title>
+    <meta charset="utf-8">
+    <title>Upload Image File</title>
 </head>
 <body>
-<form method="post">
-    <label>Write up title</label>
-    <br>
-    <input type="text" name="title">
-    <br>
-    <label>Write up link</label>
-    <br>
-    <input type="text" name="link">
-    <br>
-    <label>Write up picture</label>
-    <input type="file" name="picture" accept=".jpeg, .jpg, .png">
-    <br>
-    <input type="submit">
+<h1>Add write up</h1>
+<form action="" method="post" autocomplete="off" enctype="multipart/form-data">
+    <label for="title">Title: </label>
+    <input type="text" name="title" id="title" required> <br>
+    <label for="link">Link: </label>
+    <input type="text" name="link" id="link" required> <br>
+    <label for="image">Image: </label>
+    <input type="file" name="image" id="image" accept=".jpg, .jpeg, .png" required> <br> <br>
+    <button type="submit" name="submit">Submit</button>
 </form>
+<br>
+<a href="mutasem_host.php">write up management</a>
 </body>
 </html>
