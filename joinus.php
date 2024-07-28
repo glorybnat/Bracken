@@ -27,10 +27,10 @@ session_start();
             }else{
                 echo "<a href='login.php'>Login</a>";
             }
-            ?> </a>
+            ?>
     </div>
         <div class="title">
-            Comming soon :) <br> 
+            Comming soon :) <br>
         </div>
     </div>
 </body>
