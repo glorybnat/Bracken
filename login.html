@@ -7,7 +7,7 @@ if (@$_SESSION['loggedin'] === true){
 }
 // database connection
 $pdo = new PDO('mysql:host=localhost;port=3306;dbname=bracken', 'root', '');
-//
+// Check if username and password are set
 if (isset($_POST['username']) && isset($_POST['password'])) {
     // Convert the username to lowercase
     $username = strtolower($_POST['username']);
@@ -37,9 +37,9 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         header('Location: index.php');
         exit; // Always exit after a header redirect
     } else {
-// Handle invalid login
-$Invalid_username_or_password = "Invalid username or password.";
-}
+        // Handle invalid login
+        $Invalid_username_or_password = "Invalid username or password.";
+    }
 }
 ?>
 
@@ -51,15 +51,17 @@ $Invalid_username_or_password = "Invalid username or password.";
     <title>Login - Radare2 CTF</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link href="css/login.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/navbar.css">
 </head>
 <body>
     <div class="menu">
         <div class="logo">
-            <a href="Home.html">Br4cken</a>
+            <a href="index.php">Bracken</a>
         </div>
         <div class="menu-links">
             <a href="index.php">Home</a>
             <a href="about.php">About us</a>
+            <a href="blog.html">Blog</a>
             <a href="writeups.php">Write ups</a>
             <a href="courses.php">Courses</a>
             <a href="ctf.php">CTF</a>
@@ -79,16 +81,16 @@ $Invalid_username_or_password = "Invalid username or password.";
         </div>
     </div>
 
-<div class="login-container">
-    <h1>Login</h1>
-    <form method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form method="post">
+            <input type="text" id="username" name="username" placeholder="Username" required>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        <?php echo @$Invalid_username_or_password ?>
-        <button type="submit">Login</button>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+
+            <p id="error-message" style="font-size: xx-small;color: red;"><?php echo @$Invalid_username_or_password; ?></p>
+
+            <button type="submit">Login</button>
         </form>
         <div class="register-link">
             <p>Don't have an account?</p>
@@ -96,8 +98,13 @@ $Invalid_username_or_password = "Invalid username or password.";
         </div>
     </div>
 
-    <footer>
+    <div class="footer">
         © 2024 Bracken. All rights reserved.
-    </footer>
+    </div>
 </body>
+    <script>
+        document.querySelector('.burger-menu').addEventListener('click', function () {
+            document.querySelector('.menu-links').classList.toggle('active');
+        });
+    </script>
 </html>
