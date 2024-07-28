@@ -62,12 +62,12 @@ $Invalid_username_or_password = "Invalid username or password.";
     <a href="ctf.php">CTF</a>
     <a href="#">Join Us</a>
     <a> <?php
-        if (@$_SESSION['loggedin'] !== true){
-        echo "<a href=\"login.php\">Login</a>";
+        if (isset($_SESSION['name'])){
+            echo "<a href=\"profile.php\">$username</a>";
         }else{
-        echo "<a href='profile.php'>$username</a>";
+            echo "<a href='login.php'>Login</a>";
         }
-        ?> </a>
+        ?></a>
 </div>
 
 <div class="login-container">

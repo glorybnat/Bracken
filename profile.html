@@ -1,37 +1,40 @@
 <?php
 session_start();
 $username = $_SESSION['username'];
-if ($_SESSION['loggedin'] !== true){
+if ($_SESSION['loggedin'] !== true) {
     header('Location: login.php');
 }
-$name = $_SESSION['name'];
-$email = $_SESSION['email'];
-$phone = $_SESSION['phone'];
-$gender = $_SESSION['gender'];
-// database connection
-$pdo = new PDO('mysql:host=localhost;port=3306;dbname=bracken', 'root', '');
-// Check if all required fields are set
-if (isset($_POST['name']) && isset($_POST['username']) && isset($_POST['email'])
-&& isset($_POST['phone']) && isset($_POST['password'])) {
-    // Edit
-    $sql = "UPDATE users SET username = :username, name = :name, email = :email, password = :password, phone = :phone
-            WHERE username = '$username'";
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute(array(
-        ':username' => $_POST['username'],
-        ':name' => $_POST['name'],
-        ':email' => $_POST['email'],
-        ':password' => md5($_POST['password']), // Hash the password
-        ':phone' => $_POST['phone']));
-    header( 'Location: profile.php' );
+if ($_SESSION['verify edit'] !== true){
+    header ("Location: verify_edit.php ");
 }
+    $name = $_SESSION['name'];
+    $email = $_SESSION['email'];
+    $phone = $_SESSION['phone'];
+    $gender = $_SESSION['gender'];
+// database connection
+    $pdo = new PDO('mysql:host=localhost;port=3306;dbname=bracken', 'root', '');
+// Check if all required fields are set
+    if (isset($_POST['name']) && isset($_POST['username']) && isset($_POST['email'])
+        && isset($_POST['phone']) && isset($_POST['password'])) {
+        // Edit
+        $sql = "UPDATE users SET username = :username, name = :name, email = :email, password = :password, phone = :phone
+            WHERE username = '$username'";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(array(
+            ':username' => $_POST['username'],
+            ':name' => $_POST['name'],
+            ':email' => $_POST['email'],
+            ':password' => md5($_POST['password']), // Hash the password
+            ':phone' => $_POST['phone']));
+        header('Location: profile.php');
+    }
 // old data for print it in the box for edit
-$stmt = $pdo->query("SELECT * FROM users WHERE username = '$username'");
-$row = $stmt->fetch(PDO::FETCH_ASSOC);
-$old_username = $row['username'];
-$old_name = $row['name'];
-$old_email = $row['email'];
-$old_phone = $row['phone'];
+    $select = $pdo->query("SELECT * FROM users WHERE username = '$username'");
+    $row = $select->fetch(PDO::FETCH_ASSOC);
+    $old_username = $row['username'];
+    $old_name = $row['name'];
+    $old_email = $row['email'];
+    $old_phone = $row['phone'];
 
 ?>
 
@@ -61,10 +64,10 @@ $old_phone = $row['phone'];
             <a href="ctf.php">CTF</a>
             <a href="#">Join Us</a>
             <a> <?php
-                if ($_SESSION['loggedin'] !== true){
-                    echo "<a href=\"login.php\">Login</a>";
+                if (isset($_SESSION['name'])){
+                    echo "<a href=\"profile.php\">$username</a>";
                 }else{
-                    echo "<a href='profile.php'>$username</a>";
+                    echo "<a href='login.php'>Login</a>";
                 }
                 ?> </a>
         </div>
@@ -77,7 +80,7 @@ $old_phone = $row['phone'];
 
     <div class="profile-container">
         <?php
-        if ($gender == 'Male'){
+        if (@$gender == 'Male'){
             echo "<div class=\"profile-photo\" id=\"profile-photo\" style=\"background-image: url('img/profile/male-profile-picture.jpg');\"></div>";
         }
         else{
@@ -85,8 +88,8 @@ $old_phone = $row['phone'];
         }
         ?>
         <div class="profile-info">
-            <h2 id="username"><?php echo $old_username ?></h2>
-            <h3 id="name"><?php echo $old_name ?></h3>
+            <h2 id="username"><?php echo @$old_username ?></h2>
+            <h3 id="name"><?php echo @$old_name ?></h3>
             <!-- <p id="bio">This is a short bio.</p> -->
         </div>
         <button class="edit-button" id="edit-button">Edit</button>

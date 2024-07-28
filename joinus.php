@@ -1,6 +1,6 @@
 <?php
 session_start();
-$username = $_SESSION['username'];
+@$username = $_SESSION['username'];
 ?>
 
 <!DOCTYPE html>
@@ -21,11 +21,11 @@ $username = $_SESSION['username'];
         <a href="courses.php">Courses</a>
         <a href="ctf.php">CTF</a>
         <a href="#">Join Us</a>
-        <?php
-            if ($_SESSION['loggedin'] !== true){
-                echo "<a href=\"login.php\">Login</a>";
+        <a> <?php
+            if (isset($_SESSION['name'])){
+                echo "<a href=\"profile.php\">$username</a>";
             }else{
-                echo "<a href='profile.php'>$username</a>";
+                echo "<a href='login.php'>Login</a>";
             }
             ?>
     </div>
