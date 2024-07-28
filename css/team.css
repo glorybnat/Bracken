@@ -2,10 +2,6 @@
   --background: #2C2C2C;
 }
 
-* {
-
-}
-
 .container {
   margin: auto;
 
@@ -50,7 +46,6 @@
   height: 100%;
   width: 100%;
   object-fit: cover;
-
 }
 
 .profile:hover img {
@@ -157,7 +152,7 @@
 }
 
 .profile-name h2 {
-  margin-bottom: 0.5rem;
+  margin-top: 2.5rem;
 }
 
 .profile-name h2,.profile-name div{

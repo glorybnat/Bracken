@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Password</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="css/ChangePass.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="login-container">
+        <h1>Change Password</h1>
+        <form id="change-password-form">
+            <input type="password" id="current-password" name="current-password" placeholder="Current Password" required>
+            <input type="password" id="new-password" name="new-password" placeholder="New Password" required>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm New Password" required>
+            <button type="submit">Save Changes</button>
+        </form>
+        <button id="go-back" onclick="window.location.href='profile.html'">Go Back</button>
+    </div>
+</body>
+
+</html>
