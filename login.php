@@ -30,8 +30,12 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         $_SESSION['gender'] = $row['gender'];
         $_SESSION['loggedin'] = true;
         // Admins
-        if (in_array($_SESSION['username'], ['gazawi', 'glory', 'm_f5m', 'sartawi','bilide','tawalbeh1'])) {
+        if (in_array($_SESSION['username'], ['gazawi', 'glory', 'm_f5m', 'sartawi','bilide','tawallbeh1'])) {
             $_SESSION['admin'] = true;
+        }
+        //host
+        if ( $_SESSION['id'] == '1'){
+            $_SESSION['mutasem_is_host'] = true;
         }
 
         header('Location: index.php');

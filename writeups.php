@@ -1,6 +1,13 @@
 <?php
 session_start();
 @$username = $_SESSION['username'];
+// Database connection
+$conn = mysqli_connect("localhost", "root", "", "bracken");
+
+// Fetch data from the writeup table
+$query = "SELECT name, title, link, picture FROM writeup";
+$result = mysqli_query($conn, $query);
+
 ?>
 
 <!DOCTYPE html>
@@ -38,25 +45,39 @@ session_start();
             <div class="line"></div>
         </div>
     </div>
-
+    <?php
+    if (@$_SESSION['admin'] === true){
+        echo '<a style="margin-top: 100px" href="writeups_admin.php"><button>Write ups management</button></a>';
+    }
+    ?>
     <div class="writeups-container">
+        <?php
+        // Check if there are results
+        if (mysqli_num_rows($result) > 0) {
+        // Loop through each row and display the data
+            while($row = mysqli_fetch_assoc($result)) {
+                $name = htmlspecialchars($row['name'], ENT_QUOTES, 'UTF-8');
+                $title = htmlspecialchars($row['title'], ENT_QUOTES, 'UTF-8');
+                $link = htmlspecialchars($row['link'], ENT_QUOTES, 'UTF-8');
+                $picture = htmlspecialchars($row['picture'], ENT_QUOTES, 'UTF-8');
+        ?>
         <div class="writeup-box">
-            <img src="img/writeups/1_Y7FHOBxXgvGkXvNV33uP4Q.webp" alt="Writeup 1">
+
+            <img src="img/<?php echo $picture; ?>" alt="<?php echo $title; ?>">
             <div class="writeup-content">
-                <h3>Cyber Talents Raw Disk</h3>
-                <p>Author: Ahmad Bilide</p>
-                <a href="https://medium.com/@ahmadbilide/cyber-talents-raw-disk-bac6ca85606b" target="_blank" class="read-more-button">Read more</a>
+                <h3><?php echo $title ?></h3>
+                <p>Author: <?php echo $name?></p>
+                <a href="<?php echo $link; ?>" target="_blank" class="read-more-button">Read more</a>
+
             </div>
         </div>
-        <div class="writeup-box">
-            <img src="img/writeups/0_8z_Ria5kbc6twUt8.webp" alt="Writeup 2">
-            <div class="writeup-content">
-                <h3>Cyber Talents General Information Challenges</h3>
-                <p>Author: Majd Banat</p>
-                <a href="https://medium.com/@glorybnat/general-information-challenges-from-cybertalents-78df9780f208" target="_blank" class="read-more-button">Read more</a>
-            </div>
-        </div>
-        <!-- Add more writeup boxes as needhttps://medium.com/@ahmadbilide/cyber-talents-raw-disk-bac6ca85606bhttps://medium.com/@ahmadbilide/cyber-talents-raw-disk-bac6ca85606bed -->
+        <?php
+        }
+        } else {
+            echo "<p>No write ups in database</p>";
+        }
+        ?>
+        <!-- Add more writeup boxes as needed -->
     </div>
 
     <footer class="footer">

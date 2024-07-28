@@ -1,50 +1,48 @@
 <?php
 // session start
 session_start();
-if (@$_SESSION['loggedin'] === true) {
-    header('Location: profile.php');
 // database connection
-    $pdo = new PDO('mysql:host=localhost;port=3306;dbname=bracken', 'root', '');
+$pdo = new PDO('mysql:host=localhost;port=3306;dbname=bracken', 'root', '');
 // lowercase
-    @$username = strtolower($_POST['username']);
+@$username = strtolower($_POST['username']);
 // Check if password and confirm password match
-    if (@$_POST['password'] === @$_POST['confirm-password']) {
-        // Check if all required fields are set
-        if (isset($_POST['name']) && isset($_POST['username']) && isset($_POST['email'])
-            && isset($_POST['phone']) && isset($_POST['password']) && isset($_POST['gender'])) {
-            // Check if the username already exists in the database
-            $sql = "SELECT id FROM users WHERE username = :username";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute(array(':username' => $_POST['username']));
-            // If username exists, show an error message
-            if ($stmt->rowCount() > 0) {
-                $error_username_exists = "Username already exists. Please choose another one.";
+if (@$_POST['password'] === @$_POST['confirm-password']) {
+    // Check if all required fields are set
+    if (isset($_POST['name']) && isset($_POST['username']) && isset($_POST['email'])
+        && isset($_POST['phone']) && isset($_POST['password']) && isset($_POST['gender'])) {
+        // Check if the username already exists in the database
+        $sql = "SELECT id FROM users WHERE username = :username";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(array(':username' => $_POST['username']));
+        // If username exists, show an error message
+        if ($stmt->rowCount() > 0) {
+            $error_username_exists = "Username already exists. Please choose another one.";
 //            echo "<p>Username already exists. Please choose another one.</p>";
-            } else {
-                // If username does not exist, add to database
-                $sql = "INSERT INTO users (name, username, email, phone, password, gender)
+        } else {
+            // If username does not exist, add to database
+            $sql = "INSERT INTO users (name, username, email, phone, password, gender)
                        VALUES (:name, :username, :email, :phone, :password, :gender)";
-                $stmt = $pdo->prepare($sql);
-                $stmt->execute(array(
-                    ':name' => $_POST['name'],
-                    ':username' => $username,
-                    ':email' => $_POST['email'],
-                    ':phone' => $_POST['phone'],
-                    ':password' => md5($_POST['password']), // Hash the password
-                    ':gender' => $_POST['gender'],
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute(array(
+                ':name' => $_POST['name'],
+                ':username' => $username,
+                ':email' => $_POST['email'],
+                ':phone' => $_POST['phone'],
+                ':password' => md5($_POST['password']), // Hash the password
+                ':gender' => $_POST['gender'],
 
-                ));
-                // Redirect to login page after successful registration
-                header('Location: login.php');
-                exit();
-            }
+            ));
+            // Redirect to login page after successful registration
+            header('Location: login.php');
+            exit();
         }
-    } else {
-        // If password and confirm password do not match
-        $error_password = "Passwords do not match.";
-//    echo "<p>Passwords do not match.</p>";
     }
+} else {
+    // If password and confirm password do not match
+    $error_password = "Passwords do not match.";
+//    echo "<p>Passwords do not match.</p>";
 }
+
 ?>
 
 <!DOCTYPE html>
