@@ -4,9 +4,6 @@ $username = $_SESSION['username'];
 if ($_SESSION['loggedin'] !== true) {
     header('Location: login.php');
 }
-if ($_SESSION['verify edit'] !== true){
-    header ("Location: verify_edit.php ");
-}
     $name = $_SESSION['name'];
     $email = $_SESSION['email'];
     $phone = $_SESSION['phone'];
