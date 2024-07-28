@@ -105,8 +105,8 @@ if ($_SESSION['verify edit'] !== true){
                 <input type="text" name="username" id="edit-username" placeholder="Username" value="<?php echo $old_username?>" required>
                 <!-- <input type="text" name="edit-bio" id="edit-bio" placeholder="Bio"> -->
                 <input type="tel" name="phone" id="edit-phone" placeholder="Phone Number" value="<?php echo $old_phone?>" required>
-                <button>Edit Email</button>
-                <button>Edit Password</button>
+                <button onclick="window.location.href='changemail.html'">Edit Email</button>
+                <button onclick="window.location.href='changepass.html'">Edit Password</button>
                 <button type="submit" value="Save" id="save-button" class="save-button">Save</button>
             </form>
         </div>
