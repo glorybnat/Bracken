@@ -11,17 +11,17 @@ if ($_SESSION['loggedin'] !== true) {
 // database connection
     $pdo = new PDO('mysql:host=localhost;port=3306;dbname=bracken', 'root', '');
 // Check if all required fields are set
-    if (isset($_POST['name']) && isset($_POST['username']) && isset($_POST['email'])
-        && isset($_POST['phone']) && isset($_POST['password'])) {
+    if (isset($_POST['name']) && isset($_POST['username'])
+        && isset($_POST['phone'])) {
         // Edit
-        $sql = "UPDATE users SET username = :username, name = :name, email = :email, password = :password, phone = :phone
+        $sql = "UPDATE users SET username = :username, name = :name, phone = :phone
             WHERE username = '$username'";
         $stmt = $pdo->prepare($sql);
         $stmt->execute(array(
             ':username' => $_POST['username'],
             ':name' => $_POST['name'],
-            ':email' => $_POST['email'],
-            ':password' => md5($_POST['password']), // Hash the password
+//            ':email' => $_POST['email'],
+//            ':password' => md5($_POST['password']), // Hash the password
             ':phone' => $_POST['phone']));
         header('Location: profile.php');
     }
@@ -78,10 +78,10 @@ if ($_SESSION['loggedin'] !== true) {
     <div class="profile-container">
         <?php
         if (@$gender == 'Male'){
-            echo "<div class=\"profile-photo\" id=\"profile-photo\" style=\"background-image: url('img/profile/male-profile-picture.jpg');\"></div>";
+            echo "<div class=\"profile-photo\" id=\"profile-photo\" style=\"background-image: url('img/profile/male.png');\"></div>";
         }
         else{
-            echo "<div class=\"profile-photo\" id=\"profile-photo\" style=\"background-image: url('img/profile/female-profile-picture.jpg');\"></div>";
+            echo "<div class=\"profile-photo\" id=\"profile-photo\" style=\"background-image: url('img/profile/female.png');\"></div>";
         }
         ?>
         <div class="profile-info">
@@ -90,7 +90,7 @@ if ($_SESSION['loggedin'] !== true) {
             <!-- <p id="bio">This is a short bio.</p> -->
         </div>
         <button class="edit-button" id="edit-button">Edit</button>
-        <button  name="logout" class="logout-button" id="logout-button"><a href="logout.php">Logout</a></button>
+        <a href="logout.php"><button  name="logout" class="logout-button" id="logout-button">Logout</button></a>
     </div>
 
     <div class="modal" id="edit-modal">
@@ -102,8 +102,8 @@ if ($_SESSION['loggedin'] !== true) {
                 <input type="text" name="username" id="edit-username" placeholder="Username" value="<?php echo $old_username?>" required>
                 <!-- <input type="text" name="edit-bio" id="edit-bio" placeholder="Bio"> -->
                 <input type="tel" name="phone" id="edit-phone" placeholder="Phone Number" value="<?php echo $old_phone?>" required>
-                <button onclick="window.location.href='changemail.html'">Edit Email</button>
-                <button onclick="window.location.href='changepass.html'">Edit Password</button>
+                <button type="button" onclick="location.href='changemail.php'">Edit Email</button>
+                <button type="button" onclick="location.href='changepass.php'">Edit Password</button>
                 <button type="submit" value="Save" id="save-button" class="save-button">Save</button>
             </form>
         </div>
