@@ -108,7 +108,7 @@ session_start();
                                     <!-- <a href="mailto:example@bracken.team" title="Email"></a> -->
                                 </li>
                                 <li>
-                                    <a href="https://www.linkedin.com/in/ahmad-bilide/" title="Linkedin">
+                                    <a href="https://www.linkedin.com/in/ahmad-bilide/" target="_blank" title="Linkedin">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                             viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                                             stroke-linecap="round" stroke-linejoin="round">
@@ -127,8 +127,7 @@ session_start();
                             <div class="profile-name">
                                 <h2>AHMAD BILIDE</h2>
                                 <div class="profile-bio">
-                                    I'm a JavaScript full-stack engineer, love working with <em>React</em> and
-                                    <em>Node.js</em>.
+                                    Master in cracking codes and uncovering hidden digital clues.
                                 </div>
                             </div>
                         </div>
@@ -418,7 +417,7 @@ session_start();
                 </div>
 
             </div>
-            <div class="contact-section" style="font-family: 'Press Start 2P', cursive;">
+            <!-- <div class="contact-section" style="font-family: 'Press Start 2P', cursive;">
                 <h2>Contact Us</h2>
                 <div style="font-family: 'Candara', cursive; font-weight: bolder;">
                     <p>If you have any questions, comments, or suggestions, we'd love to hear from you! Feel free to
@@ -426,7 +425,7 @@ session_start();
 
 
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 
