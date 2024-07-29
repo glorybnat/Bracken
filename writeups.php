@@ -31,7 +31,7 @@ $result = mysqli_query($conn, $query);
             <a href="courses.php">Courses</a>
             <a href="ctf.php">CTF</a>
             <a href="#">Join Us</a>
-            <a> <?php
+            <?php
                 if (isset($_SESSION['name'])){
                     echo "<a href=\"profile.php\">$username</a>";
                 }else{
