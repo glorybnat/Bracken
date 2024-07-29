@@ -4,26 +4,38 @@ $username = $_SESSION['username'];
 if ($_SESSION['loggedin'] !== true) {
     header('Location: login.php');
 }
-    $name = $_SESSION['name'];
-    $email = $_SESSION['email'];
-    $phone = $_SESSION['phone'];
-    $gender = $_SESSION['gender'];
+$name = $_SESSION['name'];
+$email = $_SESSION['email'];
+$phone = $_SESSION['phone'];
+$gender = $_SESSION['gender'];
 // database connection
-    $pdo = new PDO('mysql:host=localhost;port=3306;dbname=bracken', 'root', '');
+$pdo = new PDO('mysql:host=localhost;port=3306;dbname=bracken', 'root', '');
 // Check if all required fields are set
     if (isset($_POST['name']) && isset($_POST['username'])
         && isset($_POST['phone'])) {
-        // Edit
-        $sql = "UPDATE users SET username = :username, name = :name, phone = :phone
-            WHERE username = '$username'";
+        // Check if the username already exists in the database
+        $username_check = strtolower($_POST['username']);
+        $sql = "SELECT id FROM users WHERE username = :username";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute(array(
-            ':username' => $_POST['username'],
-            ':name' => $_POST['name'],
-//            ':email' => $_POST['email'],
-//            ':password' => md5($_POST['password']), // Hash the password
-            ':phone' => $_POST['phone']));
-        header('Location: profile.php');
+        $stmt->execute(array(':username' => $username_check));
+        // If username exists, show an error message
+        if ($stmt->rowCount() > 0) {
+            $error_username_exists = "Username already exists. Please choose another one.";
+            echo "<script> alert('$error_username_exists'); </script>";
+        } else {
+            // Edit
+            $sql = "UPDATE users SET username = :username, name = :name, phone = :phone
+            WHERE username = '$username'";
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute(array(
+                ':username' => $username,
+                ':name' => $_POST['name'],
+                ':phone' => $_POST['phone']));
+            $_SESSION['username'] = $_POST['username'];
+            $_SESSION['name'] = $_POST['name'];
+            $_SESSION['phone'] = $_POST['phone'];
+            header('Location: profile.php');
+        }
     }
 // old data for print it in the box for edit
     $select = $pdo->query("SELECT * FROM users WHERE username = '$username'");
@@ -104,7 +116,7 @@ if ($_SESSION['loggedin'] !== true) {
                 <input type="tel" name="phone" id="edit-phone" placeholder="Phone Number" value="<?php echo $old_phone?>" required>
                 <button type="button" onclick="location.href='changemail.php'">Edit Email</button>
                 <button type="button" onclick="location.href='changepass.php'">Edit Password</button>
-                <button type="submit" value="Save" id="save-button" class="save-button">Save</button>
+                <button type="submit" name="save" value="Save" id="save-button" class="save-button">Save</button>
             </form>
         </div>
     </div>
