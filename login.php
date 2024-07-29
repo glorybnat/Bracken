@@ -64,13 +64,13 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         </div>
         <div class="menu-links">
             <a href="index.php">Home</a>
-            <a href="about.php">About us</a>
+            <a href="aboutus.php">About us</a>
             <a href="blog.html">Blog</a>
             <a href="writeups.php">Write ups</a>
             <a href="courses.php">Courses</a>
             <a href="ctf.php">CTF</a>
             <a href="#">Join Us</a>
-            <a> <?php
+            <?php
                 if (isset($_SESSION['name'])){
                     echo "<a href=\"profile.php\">$username</a>";
                 }else{

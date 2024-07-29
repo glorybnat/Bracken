@@ -10,16 +10,16 @@
 <body>
     <div class="menu">
         <div class="logo">
-            <a href="Home.html">Br4cken</a>
+            <a href="Home.html">Bracken</a>
         </div>
         <div class="menu-links">
             <a href="index.php">Home</a>
-            <a href="about.php">About us</a>
+            <a href="aboutus.php">About us</a>
             <a href="writeups.php">Write ups</a>
             <a href="courses.php">Courses</a>
             <a href="ctf.php">CTF</a>
             <a href="#">Join Us</a>
-            <a> <?php
+            <?php
                 if (isset($_SESSION['name'])){
                     echo "<a href=\"profile.php\">$username</a>";
                 }else{

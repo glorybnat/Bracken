@@ -10,21 +10,21 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Radare2 CTF</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link href="css/ctf.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/navbar.css">
 </head>
 <body>
 <div class="menu">
         <div class="logo">
-            <a href="Home.html">Br4cken</a>
+            <a href="Home.html">Bracken</a>
         </div>
         <div class="menu-links">
             <a href="index.php">Home</a>
-            <a href="about.php">About us</a>
+            <a href="aboutus.php">About us</a>
             <a href="writeups.php">Write ups</a>
             <a href="courses.php">Courses</a>
             <a href="ctf.php">CTF</a>
             <a href="#">Join Us</a>
-            <a> <?php
+            <?php
                 if (isset($_SESSION['name'])){
                     echo "<a href=\"profile.php\">$username</a>";
                 }else{

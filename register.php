@@ -58,12 +58,11 @@ if (@$_POST['password'] === @$_POST['confirm-password']) {
 <body>
     <div class="menu">
         <div class="logo">
-            <a href="index.php">Br4cken</a>
+            <a href="index.php">Bracken</a>
         </div>
         <div class="menu-links">
             <a href="index.php">Home</a>
-            <a href="about.php">About us</a>
-            <a href="blog.html">Blog</a>
+            <a href="aboutus.php">About us</a>
             <a href="writeups.php">Write ups</a>
             <a href="courses.php">Courses</a>
             <a href="ctf.php">CTF</a>

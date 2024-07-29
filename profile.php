@@ -62,23 +62,23 @@ $pdo = new PDO('mysql:host=localhost;port=3306;dbname=bracken', 'root', '');
 <body>
     <div class="menu">
         <div class="logo">
-            <a href="index.php">Br4cken</a>
+            <a href="index.php">Bracken</a>
         </div>
         <div class="menu-links">
             <a href="index.php">Home</a>
-            <a href="about.php">About us</a>
+            <a href="aboutus.php">About us</a>
             <a href="blog.html">Blog</a>
             <a href="writeups.php">Write ups</a>
             <a href="courses.php">Courses</a>
             <a href="ctf.php">CTF</a>
             <a href="#">Join Us</a>
-            <a> <?php
+            <?php
                 if (isset($_SESSION['name'])){
                     echo "<a href=\"profile.php\">$username</a>";
                 }else{
                     echo "<a href='login.php'>Login</a>";
                 }
-                ?> </a>
+            ?>
         </div>
         <div class="burger-menu">
             <div class="line"></div>

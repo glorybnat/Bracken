@@ -11,7 +11,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - Br4cken CTF</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link href="css/about1.css" rel="stylesheet">
+    <link href="css/aboutus.css" rel="stylesheet">
     <link href="css/team.css" rel="stylesheet">
     <link rel="stylesheet" href="css/social.scss">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
@@ -43,16 +43,15 @@ session_start();
 <body>
     <div class="menu" style="font-family: 'Candara', cursive;">
         <div class="logo" style="font-family: 'Press Start 2P', cursive;">
-            <a href="index.php">Br4cken</a>
+            <a href="index.php">Bracken</a>
         </div>
         <div class="menu-links" style="font-family: 'Press Start 2P', cursive;">
             <a href="index.php">Home</a>
-            <a href="about.php">About us</a>
+            <a href="aboutus.php">About us</a>
             <a href="writeups.php">Write ups</a>
             <a href="courses.php">Courses</a>
             <a href="ctf.php">CTF</a>
             <a href="#">Join Us</a>
-            <a>
                 <?php
                 if (isset($_SESSION['name'])){
                     echo "<a href=\"profile.php\">$username</a>";
@@ -60,7 +59,6 @@ session_start();
                     echo "<a href='login.php'>Login</a>";
                 }
                 ?>
-            </a>
         </div>
         <div class="burger-menu" style="font-family: 'Press Start 2P', cursive;">
             <div class="line"></div>
@@ -103,7 +101,7 @@ session_start();
                     <div class="profile-wrapper">
                         <div class="profile">
                             <div class="profile-image">
-                                <img src="/img/team_pics/Ahmad_Bilide.jpg" alt="Profile">
+                                <img src="img/team_pics/Ahmad_Bilide.jpg" alt="Profile">
                             </div>
                             <ul class="social-icons">
                                 <li>
@@ -142,7 +140,7 @@ session_start();
                     <div class="profile-wrapper">
                         <div class="profile">
                             <div class="profile-image">
-                                <img src="/img/team_pics/Majd_Banat.jpg" alt="Profile">
+                                <img src="img/team_pics/Majd_Banat.jpg" alt="Profile">
                             </div>
                             <ul class="social-icons">
                                 <li>
@@ -181,7 +179,7 @@ session_start();
                     <div class="profile-wrapper">
                         <div class="profile">
                             <div class="profile-image">
-                                <img src="/img/team_pics/Mutasem_Mustafa.jpg" alt="Profile">
+                                <img src="img/team_pics/Mutasem_Mustafa.jpg" alt="Profile">
                             </div>
                             <ul class="social-icons">
                                 <li>
@@ -220,7 +218,7 @@ session_start();
                     <div class="profile-wrapper">
                         <div class="profile">
                             <div class="profile-image">
-                                <img src="/img/team_pics/Salam_Sartawi.jpg" alt="Profile">
+                                <img src="img/team_pics/Salam_Sartawi.jpg" alt="Profile">
                             </div>
                             <ul class="social-icons">
                                 <li>
@@ -260,7 +258,7 @@ session_start();
                     <div class="profile-wrapper">
                         <div class="profile">
                             <div class="profile-image">
-                                <img src="/img/team_pics/Mousa_Almaharmeh.jpg" alt="Profile">
+                                <img src="img/team_pics/Mousa_Almaharmeh.jpg" alt="Profile">
                             </div>
                             <ul class="social-icons">
                                 <li>
@@ -299,7 +297,7 @@ session_start();
                     <div class="profile-wrapper">
                         <div class="profile">
                             <div class="profile-image">
-                                <img src="/img/team_pics/Ayoub_Droubi.jpg" alt="Profile">
+                                <img src="img/team_pics/Ayoub_Droubi.jpg" alt="Profile">
                             </div>
                             <ul class="social-icons">
                                 <li>
@@ -338,7 +336,7 @@ session_start();
                     <div class="profile-wrapper">
                         <div class="profile">
                             <div class="profile-image">
-                                <img src="/img/team_pics/Mohammad_Tawalbeh.jpg" alt="Profile">
+                                <img src="img/team_pics/Mohammad_Tawalbeh.jpg" alt="Profile">
                             </div>
                             <ul class="social-icons">
                                 <li>
@@ -378,7 +376,7 @@ session_start();
                     <div class="profile-wrapper">
                         <div class="profile">
                             <div class="profile-image">
-                                <img src="/img/team_pics/Theeb_Alaridy.jpg" alt="Profile">
+                                <img src="img/team_pics/Theeb_Alaridy.jpg" alt="Profile">
                             </div>
                             <ul class="social-icons">
                                 <li>

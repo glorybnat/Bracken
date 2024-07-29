@@ -17,16 +17,16 @@ session_start();
 <body>
     <div class="menu">
         <div class="logo">
-            <a href="Home.html">Br4cken</a>
+            <a href="Home.html">Bracken</a>
         </div>
         <div class="menu-links">
             <a href="index.php">Home</a>
-            <a href="about.php">About us</a>
+            <a href="aboutus.php">About us</a>
             <a href="writeups.php">Write ups</a>
             <a href="courses.php">Courses</a>
             <a href="ctf.php">CTF</a>
             <a href="#">Join Us</a>
-            <a> <?php
+            <?php
                 if (isset($_SESSION['name'])){
                     echo "<a href=\"profile.php\">$username</a>";
                 }else{
@@ -41,31 +41,31 @@ session_start();
         </div>
     </div>
     <div class="title">
-        Welcome to Br4cken <br>
+        Welcome to Bracken <br>
     </div>
 
     <div class="posts-container">
         <!-- Example of 6 posts -->
         <a href="https://www.instagram.com/p/C92IAELN6IT/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">
             <div class="post"
-                data-title="Bracken team's in the first CTF competition at Zarqa University, achieving second place. 🥈">
-                <img src="/img/posts/Bracken_in_zu_2024.jpg" alt="Bracken in zu 2024">
+                data-title="Bracken's team in the first CTF competition at Zarqa University, achieving second place. 🥈">
+                <img src="img/posts/Bracken_in_zu_2024.jpg" alt="Bracken in zu 2024">
             </div>
         </a>
         <div class="post" data-title="Post 2">
-            <img src="/img/b.png" alt="Post 2">
+            <img src="img/logo.png" alt="Post 2">
         </div>
         <div class="post" data-title="Post 3">
-            <img src="/img/b.png" alt="Post 3">
+            <img src="img/logo.png" alt="Post 3">
         </div>
         <div class="post" data-title="Post 4">
-            <img src="path/to/image4.jpg" alt="Post 4">
+            <img src="img/logo.png" alt="Post 4">
         </div>
         <div class="post" data-title="Post 5">
-            <img src="path/to/image5.jpg" alt="Post 5">
+            <img src="img/logo.png" alt="Post 5">
         </div>
         <div class="post" data-title="Post 6">
-            <img src="path/to/image6.jpg" alt="Post 6">
+            <img src="img/logo.png" alt="Post 6">
         </div>
     </div>
 
