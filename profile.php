@@ -10,19 +10,45 @@ $phone = $_SESSION['phone'];
 $gender = $_SESSION['gender'];
 // database connection
 $pdo = new PDO('mysql:host=localhost;port=3306;dbname=bracken', 'root', '');
+// old data for print it in the box for edit
+$select = $pdo->query("SELECT * FROM users WHERE username = '$username'");
+$row = $select->fetch(PDO::FETCH_ASSOC);
+$old_username = $row['username'];
+$old_name = $row['name'];
+$old_email = $row['email'];
+$old_phone = $row['phone'];
 // Check if all required fields are set
     if (isset($_POST['name']) && isset($_POST['username'])
         && isset($_POST['phone'])) {
+
         // Check if the username already exists in the database
         $username_check = strtolower($_POST['username']);
         $sql = "SELECT id FROM users WHERE username = :username";
         $stmt = $pdo->prepare($sql);
         $stmt->execute(array(':username' => $username_check));
         // If username exists, show an error message
-        if ($stmt->rowCount() > 0) {
-            $error_username_exists = "Username already exists. Please choose another one.";
-            echo "<script> alert('$error_username_exists'); </script>";
-        } else {
+        if ($_POST['username'] != $old_username){
+            if ($stmt->rowCount() > 0) {
+                $error_username_exists = "Username already exists. Please choose another one.";
+                echo "<script> alert('$error_username_exists'); </script>";
+            } else {
+                $sql = "UPDATE users SET username = :username, name = :name, phone = :phone
+                WHERE username = '$username'";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute(array(
+                    ':username' => $_POST['username'],
+                    ':name' => $_POST['name'],
+                    ':phone' => $_POST['phone']));
+                $_SESSION['username'] = $_POST['username'];
+                $_SESSION['name'] = $_POST['name'];
+                $_SESSION['phone'] = $_POST['phone'];
+                $username = $_SESSION['username'];
+                $name = $_SESSION['name'];
+                $phone = $_SESSION['phone'];
+                header('Location: profile.php');
+            }
+        }
+        if ($_POST['username'] == $old_username) {
             // Edit
             $sql = "UPDATE users SET username = :username, name = :name, phone = :phone
             WHERE username = '$username'";
@@ -34,16 +60,19 @@ $pdo = new PDO('mysql:host=localhost;port=3306;dbname=bracken', 'root', '');
             $_SESSION['username'] = $_POST['username'];
             $_SESSION['name'] = $_POST['name'];
             $_SESSION['phone'] = $_POST['phone'];
+            $username = $_SESSION['username'];
+            $name = $_SESSION['name'];
+            $phone = $_SESSION['phone'];
             header('Location: profile.php');
         }
     }
-// old data for print it in the box for edit
-    $select = $pdo->query("SELECT * FROM users WHERE username = '$username'");
-    $row = $select->fetch(PDO::FETCH_ASSOC);
-    $old_username = $row['username'];
-    $old_name = $row['name'];
-    $old_email = $row['email'];
-    $old_phone = $row['phone'];
+//// old data for print it in the box for edit
+//    $select = $pdo->query("SELECT * FROM users WHERE username = '$username'");
+//    $row = $select->fetch(PDO::FETCH_ASSOC);
+//    $old_username = $row['username'];
+//    $old_name = $row['name'];
+//    $old_email = $row['email'];
+//    $old_phone = $row['phone'];
 
 ?>
 
