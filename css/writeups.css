@@ -9,7 +9,8 @@ body {
     justify-content: flex-start;
     background-color: #000;
     font-size: 1rem;
-    overflow-x: hidden; /* Prevent horizontal scroll */
+    overflow-x: hidden;
+    /* Prevent horizontal scroll */
 }
 
 /* Background Image with Grayscale */
@@ -150,26 +151,42 @@ body::before {
     gap: 2rem;
     padding: 2rem;
     justify-content: center;
-    margin-top: 10vh; /* Adjust as necessary */
+    margin-top: 10vh;
+    /* Adjust as necessary */
     z-index: 2;
 }
 
 /* Writeup Box */
 .writeup-box {
     background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px); /* Blur effect */
+    backdrop-filter: blur(10px);
+    /* Blur effect */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     overflow: hidden;
-    width: calc(33% - 2rem); /* 3 boxes per row with gap */
+    width: calc(33% - 2rem);
+    /* 3 boxes per row with gap */
     position: relative;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.writeup-box img {
+/* Image Container to maintain aspect ratio */
+.writeup-box .img-container {
+    position: relative;
     width: 100%;
-    height: auto;
-    display: block;
+    padding-top: 75%;
+    /* 4:3 aspect ratio */
+    overflow: hidden;
+    border-bottom: 2px solid #ffcc00;
+}
+
+.writeup-box img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-bottom: 2px solid #ffcc00;
 }
 
@@ -213,13 +230,15 @@ body::before {
 /* Responsive Styles */
 @media (max-width: 1280px) {
     .writeup-box {
-        width: calc(50% - 2rem); /* 2 boxes per row with gap */
+        width: calc(50% - 2rem);
+        /* 2 boxes per row with gap */
     }
 }
 
 @media (max-width: 860px) {
     .writeup-box {
-        width: 100%; /* 1 box per row */
+        width: 100%;
+        /* 1 box per row */
     }
 }
 
@@ -240,6 +259,7 @@ body::before {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }

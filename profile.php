@@ -11,39 +11,44 @@ $gender = $_SESSION['gender'];
 // database connection
 $pdo = new PDO('mysql:host=localhost;port=3306;dbname=bracken', 'root', '');
 // Check if all required fields are set
-    if (isset($_POST['name']) && isset($_POST['username'])
-        && isset($_POST['phone'])) {
-        // Check if the username already exists in the database
-        $username_check = strtolower($_POST['username']);
-        $sql = "SELECT id FROM users WHERE username = :username";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute(array(':username' => $username_check));
-        // If username exists, show an error message
-        if ($stmt->rowCount() > 0) {
-            $error_username_exists = "Username already exists. Please choose another one.";
-            echo "<script> alert('$error_username_exists'); </script>";
-        } else {
-            // Edit
-            $sql = "UPDATE users SET username = :username, name = :name, phone = :phone
+if (
+    isset($_POST['name']) && isset($_POST['username'])
+    && isset($_POST['phone'])
+) {
+    // Check if the username already exists in the database
+    $username_check = strtolower($_POST['username']);
+    $sql = "SELECT id FROM users WHERE username = :username";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute(array(':username' => $username_check));
+    // If username exists, show an error message
+    if ($stmt->rowCount() > 0) {
+        $error_username_exists = "Username already exists. Please choose another one.";
+        echo "<script> alert('$error_username_exists'); </script>";
+    } else {
+        // Edit
+        $sql = "UPDATE users SET username = :username, name = :name, phone = :phone
             WHERE username = '$username'";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute(array(
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(
+            array(
                 ':username' => $username,
                 ':name' => $_POST['name'],
-                ':phone' => $_POST['phone']));
-            $_SESSION['username'] = $_POST['username'];
-            $_SESSION['name'] = $_POST['name'];
-            $_SESSION['phone'] = $_POST['phone'];
-            header('Location: profile.php');
-        }
+                ':phone' => $_POST['phone']
+            )
+        );
+        $_SESSION['username'] = $_POST['username'];
+        $_SESSION['name'] = $_POST['name'];
+        $_SESSION['phone'] = $_POST['phone'];
+        header('Location: profile.php');
     }
+}
 // old data for print it in the box for edit
-    $select = $pdo->query("SELECT * FROM users WHERE username = '$username'");
-    $row = $select->fetch(PDO::FETCH_ASSOC);
-    $old_username = $row['username'];
-    $old_name = $row['name'];
-    $old_email = $row['email'];
-    $old_phone = $row['phone'];
+$select = $pdo->query("SELECT * FROM users WHERE username = '$username'");
+$row = $select->fetch(PDO::FETCH_ASSOC);
+$old_username = $row['username'];
+$old_name = $row['name'];
+$old_email = $row['email'];
+$old_phone = $row['phone'];
 
 ?>
 
@@ -62,21 +67,21 @@ $pdo = new PDO('mysql:host=localhost;port=3306;dbname=bracken', 'root', '');
 <body>
     <div class="menu">
         <div class="logo">
-            <a href="index.php">Bracken</a>
+            <a href="Home.html">Bracken</a>
         </div>
         <div class="menu-links">
             <a href="index.php">Home</a>
-            <a href="aboutus.php">About us</a>
-            <a href="writeups.php">Write ups</a>
+            <a href="aboutus.php">About</a>
+            <a href="writeups.php">WriteUps</a>
             <a href="courses.php">Courses</a>
-            <a href="ctf.php">CTF</a>
-            <a href="#">Join Us</a>
+            <a href="https://ctf.bracken.team">CTF</a>
+            <a href="joinus.php">Join</a>
             <?php
-                if (isset($_SESSION['name'])){
-                    echo "<a href=\"profile.php\">$username</a>";
-                }else{
-                    echo "<a href='login.php'>Login</a>";
-                }
+            if (isset($_SESSION['name'])) {
+                echo "<a href=\"profile.php\">$username</a>";
+            } else {
+                echo "<a href='login.php'>Login</a>";
+            }
             ?>
         </div>
         <div class="burger-menu">
@@ -88,10 +93,9 @@ $pdo = new PDO('mysql:host=localhost;port=3306;dbname=bracken', 'root', '');
 
     <div class="profile-container">
         <?php
-        if (@$gender == 'Male'){
+        if (@$gender == 'Male') {
             echo "<div class=\"profile-photo\" id=\"profile-photo\" style=\"background-image: url('img/profile/male.png');\"></div>";
-        }
-        else{
+        } else {
             echo "<div class=\"profile-photo\" id=\"profile-photo\" style=\"background-image: url('img/profile/female.png');\"></div>";
         }
         ?>
@@ -101,7 +105,7 @@ $pdo = new PDO('mysql:host=localhost;port=3306;dbname=bracken', 'root', '');
             <!-- <p id="bio">This is a short bio.</p> -->
         </div>
         <button class="edit-button" id="edit-button">Edit</button>
-        <a href="logout.php"><button  name="logout" class="logout-button" id="logout-button">Logout</button></a>
+        <a href="logout.php"><button name="logout" class="logout-button" id="logout-button">Logout</button></a>
     </div>
 
     <div class="modal" id="edit-modal">
@@ -109,10 +113,13 @@ $pdo = new PDO('mysql:host=localhost;port=3306;dbname=bracken', 'root', '');
             <form method="post">
                 <span class="modal-close" id="modal-close">&times;</span>
                 <h2>Edit Profile</h2>
-                <input type="text" name="name" id="edit-name" placeholder="Full Name" value="<?php echo $old_name?>" required>
-                <input type="text" name="username" id="edit-username" placeholder="Username" value="<?php echo $old_username?>" required>
+                <input type="text" name="name" id="edit-name" placeholder="Full Name" value="<?php echo $old_name ?>"
+                    required>
+                <input type="text" name="username" id="edit-username" placeholder="Username"
+                    value="<?php echo $old_username ?>" required>
                 <!-- <input type="text" name="edit-bio" id="edit-bio" placeholder="Bio"> -->
-                <input type="tel" name="phone" id="edit-phone" placeholder="Phone Number" value="<?php echo $old_phone?>" required>
+                <input type="tel" name="phone" id="edit-phone" placeholder="Phone Number"
+                    value="<?php echo $old_phone ?>" required>
                 <button type="button" onclick="location.href='changemail.php'">Edit Email</button>
                 <button type="button" onclick="location.href='changepass.php'">Edit Password</button>
                 <button type="submit" name="save" value="Save" id="save-button" class="save-button">Save</button>

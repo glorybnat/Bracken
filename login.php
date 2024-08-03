@@ -2,7 +2,7 @@
 // session start
 session_start();
 // Authentication
-if (@$_SESSION['loggedin'] === true){
+if (@$_SESSION['loggedin'] === true) {
     header('Location: profile.php');
 }
 // database connection
@@ -30,11 +30,11 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         $_SESSION['gender'] = $row['gender'];
         $_SESSION['loggedin'] = true;
         // Admins
-        if (in_array($_SESSION['username'], ['gazawi', 'glory', 'm_f5m', 'sartawi','bilide','tawallbeh1'])) {
+        if (in_array($_SESSION['username'], ['gazawi', 'glory', 'm_f5m', 'sartawi', 'bilide', 'tawallbeh1'])) {
             $_SESSION['admin'] = true;
         }
         //host
-        if ( $_SESSION['id'] == '1'){
+        if ($_SESSION['id'] == '1') {
             $_SESSION['mutasem_is_host'] = true;
         }
 
@@ -49,6 +49,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -57,24 +58,25 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     <link href="css/login.css" rel="stylesheet">
     <link rel="stylesheet" href="css/navbar.css">
 </head>
+
 <body>
     <div class="menu">
         <div class="logo">
-            <a href="index.php">Bracken</a>
+            <a href="Home.html">Bracken</a>
         </div>
         <div class="menu-links">
             <a href="index.php">Home</a>
-            <a href="aboutus.php">About us</a>
-            <a href="writeups.php">Write ups</a>
+            <a href="aboutus.php">About</a>
+            <a href="writeups.php">WriteUps</a>
             <a href="courses.php">Courses</a>
-            <a href="ctf.php">CTF</a>
-            <a href="#">Join Us</a>
+            <a href="https://ctf.bracken.team">CTF</a>
+            <a href="joinus.php">Join</a>
             <?php
-                if (isset($_SESSION['name'])){
-                    echo "<a href=\"profile.php\">$username</a>";
-                }else{
-                    echo "<a href='login.php'>Login</a>";
-                }
+            if (isset($_SESSION['name'])) {
+                echo "<a href=\"profile.php\">$username</a>";
+            } else {
+                echo "<a href='login.php'>Login</a>";
+            }
             ?>
         </div>
         <div class="burger-menu">
@@ -91,7 +93,8 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 
             <input type="password" id="password" name="password" placeholder="Password" required>
 
-            <p id="error-message" style="font-size: xx-small;color: red;"><?php echo @$Invalid_username_or_password; ?></p>
+            <p id="error-message" style="font-size: xx-small;color: red;"><?php echo @$Invalid_username_or_password; ?>
+            </p>
 
             <button type="submit">Login</button>
         </form>
@@ -105,9 +108,10 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         © 2024 Bracken. All rights reserved.
     </div>
 </body>
-    <script>
-        document.querySelector('.burger-menu').addEventListener('click', function () {
-            document.querySelector('.menu-links').classList.toggle('active');
-        });
-    </script>
+<script>
+    document.querySelector('.burger-menu').addEventListener('click', function () {
+        document.querySelector('.menu-links').classList.toggle('active');
+    });
+</script>
+
 </html>

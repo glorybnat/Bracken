@@ -148,13 +148,6 @@ body::before {
     }
 }
 
-.title {
-    font-size: 1.375rem;
-    margin-top: 26.5rem; /* Adjust to account for fixed navbar */
-    text-align: center;
-    z-index: 2;
-    text-shadow: 2px 2px 5px #181414;
-}
 
 
 /* Posts Grid */
@@ -219,8 +212,41 @@ body::before {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Enhanced shadow */
 }
 
+.title {
+    font-size: 1.375rem;
+    margin-top: 26.5rem; /* Adjust to account for fixed navbar */
+    text-align: center;
+    z-index: 2;
+    opacity: 0;
+    text-shadow: 2px 2px 5px #181414;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    width: 100%;
+    backdrop-filter: blur(10px);
+}
+
+body.loaded .title {
+    font-size: 1.375rem;
+    margin-top: 26.5rem; /* Adjust to account for fixed navbar */
+    text-align: center;
+    z-index: 2;
+    opacity: 1;
+    transition: opacity 0.5s ease-in, margin-top 2s ease-in-out;
+    text-shadow: 2px 2px 5px #181414;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    width: 100%;
+    backdrop-filter: blur(10px);
+}
+
 body.loaded .posts-container {
-    margin-top: 40vh; /* Adjusted to ensure upper half of posts are visible */
+    margin-top: 30vh; /* Adjusted to ensure upper half of posts are visible */
     transition: opacity 0.5s ease-in, margin-top 1s ease-in-out;
 }
 

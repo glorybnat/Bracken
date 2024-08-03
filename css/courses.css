@@ -1,56 +1,20 @@
-body {
-    position: relative;
-    height: 100vh;
-    background: url('../img/giphy\ \(17\).webp') no-repeat center center/cover;
-    color: #fff;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    z-index: 1;
-    overflow: hidden;
-    text-shadow: 2px 2px 5px #181414;
-    font-family: 'Press Start 2P', cursive;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #000;
-}
-
-.menu {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    text-align: right;
-    width: 100%;
-}
-
-.menu a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
-    font-size: 14px;
-}
-
-.logo {
-    font-size: 100px;
-    line-height: 100px;
-}
-
 .title {
-    font-size: 22px;
-    margin-top: 20px;
+  font-size: 22px;
+  margin-top: 10px;
 }
 
+/* Footer Styles */
 .footer {
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
-    text-align: center;
-    font-size: 10px;
-}
-
-p {
-    cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  padding: 10px;
+  width: 100%;
+  color: #fff;
+  font-size: 10px;
+  backdrop-filter: blur(10px);
+  margin-top: 10px;
+  animation: fadeIn 0.5s ease-out forwards;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
