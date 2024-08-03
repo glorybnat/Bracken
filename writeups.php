@@ -12,6 +12,7 @@ $result = mysqli_query($conn, $query);
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,6 +20,7 @@ $result = mysqli_query($conn, $query);
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link href="css/writeups.css" rel="stylesheet">
 </head>
+
 <body>
     <div class="menu">
         <div class="logo">
@@ -26,17 +28,17 @@ $result = mysqli_query($conn, $query);
         </div>
         <div class="menu-links">
             <a href="index.php">Home</a>
-            <a href="aboutus.php">About us</a>
-            <a href="writeups.php">Write ups</a>
+            <a href="aboutus.php">About</a>
+            <a href="writeups.php">WriteUps</a>
             <a href="courses.php">Courses</a>
             <a href="ctf.php">CTF</a>
-            <a href="#">Join Us</a>
+            <a href="joinus.php">Join</a>
             <?php
-                if (isset($_SESSION['name'])){
-                    echo "<a href=\"profile.php\">$username</a>";
-                }else{
-                    echo "<a href='login.php'>Login</a>";
-                }
+            if (isset($_SESSION['name'])) {
+                echo "<a href=\"profile.php\">$username</a>";
+            } else {
+                echo "<a href='login.php'>Login</a>";
+            }
             ?>
         </div>
         <div class="burger-menu">
@@ -46,7 +48,7 @@ $result = mysqli_query($conn, $query);
         </div>
     </div>
     <?php
-    if (@$_SESSION['admin'] === true){
+    if (@$_SESSION['admin'] === true) {
         echo '<a style="margin-top: 100px" href="writeups_admin.php"><button>Write ups management</button></a>';
     }
     ?>
@@ -54,25 +56,27 @@ $result = mysqli_query($conn, $query);
         <?php
         // Check if there are results
         if (mysqli_num_rows($result) > 0) {
-        // Loop through each row and display the data
-            while($row = mysqli_fetch_assoc($result)) {
+            // Loop through each row and display the data
+            while ($row = mysqli_fetch_assoc($result)) {
                 $name = htmlspecialchars($row['name'], ENT_QUOTES, 'UTF-8');
                 $title = htmlspecialchars($row['title'], ENT_QUOTES, 'UTF-8');
                 $link = htmlspecialchars($row['link'], ENT_QUOTES, 'UTF-8');
                 $picture = htmlspecialchars($row['picture'], ENT_QUOTES, 'UTF-8');
-        ?>
-        <div class="writeup-box">
+                ?>
+                <div class="writeup-box">
 
-            <img src="img/<?php echo $picture; ?>" alt="<?php echo $title; ?>">
-            <div class="writeup-content">
-                <h3><?php echo $title ?></h3>
-                <p>Author: <?php echo $name?></p>
-                <a href="<?php echo $link; ?>" target="_blank" class="read-more-button">Read more</a>
+                    <div class="img-container">
+                        <img src="img/<?php echo $picture; ?>" alt="<?php echo $title; ?>">
+                    </div>
+                    <div class="writeup-content">
+                        <h3><?php echo $title ?></h3>
+                        <p>Author: <?php echo $name ?></p>
+                        <a href="<?php echo $link; ?>" target="_blank" class="read-more-button">Read Writeup</a>
 
-            </div>
-        </div>
-        <?php
-        }
+                    </div>
+                </div>
+                <?php
+            }
         } else {
             echo "<p>No write ups in database</p>";
         }
@@ -90,4 +94,5 @@ $result = mysqli_query($conn, $query);
         });
     </script>
 </body>
+
 </html>

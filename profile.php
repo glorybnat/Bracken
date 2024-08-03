@@ -66,15 +66,9 @@ $old_phone = $row['phone'];
             header('Location: profile.php');
         }
     }
-//// old data for print it in the box for edit
-//    $select = $pdo->query("SELECT * FROM users WHERE username = '$username'");
-//    $row = $select->fetch(PDO::FETCH_ASSOC);
-//    $old_username = $row['username'];
-//    $old_name = $row['name'];
-//    $old_email = $row['email'];
-//    $old_phone = $row['phone'];
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -91,21 +85,21 @@ $old_phone = $row['phone'];
 <body>
     <div class="menu">
         <div class="logo">
-            <a href="index.php">Bracken</a>
+            <a href="Home.html">Bracken</a>
         </div>
         <div class="menu-links">
             <a href="index.php">Home</a>
-            <a href="aboutus.php">About us</a>
-            <a href="writeups.php">Write ups</a>
+            <a href="aboutus.php">About</a>
+            <a href="writeups.php">WriteUps</a>
             <a href="courses.php">Courses</a>
-            <a href="ctf.php">CTF</a>
-            <a href="#">Join Us</a>
+            <a href="https://ctf.bracken.team">CTF</a>
+            <a href="joinus.php">Join</a>
             <?php
-                if (isset($_SESSION['name'])){
-                    echo "<a href=\"profile.php\">$username</a>";
-                }else{
-                    echo "<a href='login.php'>Login</a>";
-                }
+            if (isset($_SESSION['name'])) {
+                echo "<a href=\"profile.php\">$username</a>";
+            } else {
+                echo "<a href='login.php'>Login</a>";
+            }
             ?>
         </div>
         <div class="burger-menu">
@@ -117,10 +111,9 @@ $old_phone = $row['phone'];
 
     <div class="profile-container">
         <?php
-        if (@$gender == 'Male'){
+        if (@$gender == 'Male') {
             echo "<div class=\"profile-photo\" id=\"profile-photo\" style=\"background-image: url('img/profile/male.png');\"></div>";
-        }
-        else{
+        } else {
             echo "<div class=\"profile-photo\" id=\"profile-photo\" style=\"background-image: url('img/profile/female.png');\"></div>";
         }
         ?>
@@ -130,7 +123,7 @@ $old_phone = $row['phone'];
             <!-- <p id="bio">This is a short bio.</p> -->
         </div>
         <button class="edit-button" id="edit-button">Edit</button>
-        <a href="logout.php"><button  name="logout" class="logout-button" id="logout-button">Logout</button></a>
+        <a href="logout.php"><button name="logout" class="logout-button" id="logout-button">Logout</button></a>
     </div>
 
     <div class="modal" id="edit-modal">
@@ -138,10 +131,13 @@ $old_phone = $row['phone'];
             <form method="post">
                 <span class="modal-close" id="modal-close">&times;</span>
                 <h2>Edit Profile</h2>
-                <input type="text" name="name" id="edit-name" placeholder="Full Name" value="<?php echo $old_name?>" required>
-                <input type="text" name="username" id="edit-username" placeholder="Username" value="<?php echo $old_username?>" required>
+                <input type="text" name="name" id="edit-name" placeholder="Full Name" value="<?php echo $old_name ?>"
+                    required>
+                <input type="text" name="username" id="edit-username" placeholder="Username"
+                    value="<?php echo $old_username ?>" required>
                 <!-- <input type="text" name="edit-bio" id="edit-bio" placeholder="Bio"> -->
-                <input type="tel" name="phone" id="edit-phone" placeholder="Phone Number" value="<?php echo $old_phone?>" required>
+                <input type="tel" name="phone" id="edit-phone" placeholder="Phone Number"
+                    value="<?php echo $old_phone ?>" required>
                 <button type="button" onclick="location.href='changemail.php'">Edit Email</button>
                 <button type="button" onclick="location.href='changepass.php'">Edit Password</button>
                 <button type="submit" name="save" value="Save" id="save-button" class="save-button">Save</button>
