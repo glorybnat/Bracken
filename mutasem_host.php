@@ -49,5 +49,7 @@ while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
 } ?>
 </table>
 <a href="writeups.php">back to Writeups page</a>
+<br>
+<a href="for_users.php">for users page</a>
 </body>
 </html>
