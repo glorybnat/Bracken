@@ -13,13 +13,7 @@ session_start();
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link href="css/Home.css" rel="stylesheet">
     <link rel="stylesheet" href="css/social.css">
-    <link rel="stylesheet" href="css/splashscreen.css">
-    <script src="js/SplashScreen.js"></script>\
-
 </head>
-
-
-
 
 <body>
     <div class="menu">
