@@ -68,6 +68,6 @@ $conn->close();
     <button type="submit" name="submit">Submit</button>
 </form>
 <br>
-<a href="mutasem_host.php">write up management</a>
+<a href="mutasem_host.php">Back to write ups page</a>
 </body>
 </html>
