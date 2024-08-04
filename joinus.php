@@ -9,7 +9,11 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Radare2 CTF</title>
+    <title>Join Us</title>
+
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>➕</text></svg>" />
+
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="css/joinus.css">
@@ -18,21 +22,21 @@ session_start();
 <body>
     <div class="menu">
         <div class="logo">
-            <a href="Home.html">Bracken</a>
+            <a href="/">Bracken</a>
         </div>
         <div class="menu-links">
-            <a href="index.php">Home</a>
+            <a href="/">Home</a>
             <a href="aboutus.php">About</a>
             <a href="writeups.php">WriteUps</a>
             <a href="courses.php">Courses</a>
             <a href="https://ctf.bracken.team">CTF</a>
             <a href="joinus.php">Join</a>
             <?php
-                if (isset($_SESSION['name'])) {
-                    echo "<a href=\"profile.php\">$username</a>";
-                } else {
-                    echo "<a href='login.php'>Login</a>";
-                }
+            if (isset($_SESSION['name'])) {
+                echo "<a href=\"profile.php\">$username</a>";
+            } else {
+                echo "<a href='login.php'>Login</a>";
+            }
             ?>
         </div>
         <div class="burger-menu">

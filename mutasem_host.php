@@ -21,6 +21,10 @@ if ( isset($_POST['delete']) && isset($_POST['id']) ) {
 <html>
 <head>
     <title>BLYAT</title>
+
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>" />
+
     <style>
         body{
             background-image: url("/img/profile/aldrobi.jpg");

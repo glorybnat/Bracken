@@ -76,7 +76,11 @@ $old_phone = $row['phone'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
+    <title>Profile</title>
+
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👤</text></svg>" />
+
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link href="css/navbar.css" rel="stylesheet">
     <link rel="stylesheet" href="css/profile.css">
@@ -85,7 +89,7 @@ $old_phone = $row['phone'];
 <body>
     <div class="menu">
         <div class="logo">
-            <a href="Home.html">Bracken</a>
+            <a href="index.php">Bracken</a>
         </div>
         <div class="menu-links">
             <a href="index.php">Home</a>

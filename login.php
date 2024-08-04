@@ -53,7 +53,11 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Radare2 CTF</title>
+    <title>Login</title>
+
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👤</text></svg>" />
+
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link href="css/login.css" rel="stylesheet">
     <link rel="stylesheet" href="css/navbar.css">
@@ -62,10 +66,10 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 <body>
     <div class="menu">
         <div class="logo">
-            <a href="Home.html">Bracken</a>
+            <a href="/">Bracken</a>
         </div>
         <div class="menu-links">
-            <a href="index.php">Home</a>
+            <a href="/">Home</a>
             <a href="aboutus.php">About</a>
             <a href="writeups.php">WriteUps</a>
             <a href="courses.php">Courses</a>
