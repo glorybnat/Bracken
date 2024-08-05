@@ -20,7 +20,7 @@ body {
 /* Background Image with Grayscale */
 body::before {
   content: '';
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -223,12 +223,18 @@ h1, h2, h3 {
 footer {
   background-color: rgba(0, 0, 0, 0.8);
   text-align: center;
-  padding: 10px;
+  padding: 10px 0;
   width: 100%;
-  bottom: 0;
   color: #fff;
   font-size: 10px;
   backdrop-filter: blur(10px);
+  margin-top: 10px;
+}
+
+@media (max-width: 480px) {
+  .footer{
+      font-size: 8px;
+  }
 }
 
 @media (max-width: 1080px){

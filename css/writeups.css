@@ -255,6 +255,12 @@ body::before {
     animation: fadeIn 0.5s ease-out forwards;
 }
 
+@media (max-width: 480px) {
+    .footer{
+        font-size: 8px;
+    }
+}
+
 @keyframes fadeIn {
     from {
         opacity: 0;
