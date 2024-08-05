@@ -60,10 +60,13 @@ session_start();
         document.querySelector('.menu-links').classList.toggle('active');
     });
 
-    document.addEventListener('DOMContentLoaded', function () {
-        setTimeout(function () {
-            document.body.classList.add('loaded');
-        }, 500); // Delay to show the scroll animation
+    document.addEventListener('click', function (event) {
+        const menuLinks = document.querySelector('.menu-links');
+        const burgerMenu = document.querySelector('.burger-menu');
+
+        if (!menuLinks.contains(event.target) && !burgerMenu.contains(event.target)) {
+            menuLinks.classList.remove('active');
+        }
     });
 </script>
 

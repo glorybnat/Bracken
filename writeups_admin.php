@@ -7,7 +7,7 @@ if ($_SESSION['admin'] !== true) {
     header('Location: writeup.php');
 }
 // Database connection
-$conn = mysqli_connect("localhost", "root", "", "bracken");
+$conn = mysqli_connect("localhost", "modermom_bracken", "Bracken@2024", "modermom_bracken");
 
 if(isset($_POST["submit"])){
     $title = $_POST["title"];

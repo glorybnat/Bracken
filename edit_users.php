@@ -9,7 +9,7 @@ if ($_SESSION['admin'] !== true) {
 if ($_SESSION['mutasem_is_host'] !== true) {
     header('Location: writeups.php');
 }
-$pdo = new PDO('mysql:host=localhost;port=3306;dbname=bracken', 'root', '');
+$pdo = new PDO('mysql:host=localhost;port=3306;dbname=modermom_bracken', 'modermom_bracken', 'Bracken@2024');
 
 if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email'])){
     $username = $_POST['username'];

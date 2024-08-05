@@ -5,7 +5,7 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   max-width: 400px;
-  width: 100%;
+  width: 80%;
   margin: auto;
   backdrop-filter: blur(10px);
   display: flex;
@@ -102,7 +102,7 @@
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   max-width: 400px;
-  width: 100%;
+  width: 80%;
   margin: auto;
   backdrop-filter: blur(10px);
 }
@@ -175,8 +175,8 @@
 }
 
 /* Add this rule */
-.save-button {
-  margin-top: 10px;
+button.save-button {
+  margin-top: 15px;
 }
 
 .modal-close {
@@ -191,7 +191,7 @@
 footer {
   background-color: rgba(0, 0, 0, 0.8);
   text-align: center;
-  padding: 10px;
+  padding: 10px 0;
   width: 100%;
   color: #fff;
   font-size: 10px;

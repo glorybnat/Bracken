@@ -95,17 +95,27 @@ session_start();
         © 2024 Bracken. All rights reserved.
     </footer>
 
-    <script>
-        document.querySelector('.burger-menu').addEventListener('click', function () {
-            document.querySelector('.menu-links').classList.toggle('active');
-        });
-
-        document.addEventListener('DOMContentLoaded', function () {
-            setTimeout(function () {
-                document.body.classList.add('loaded');
-            }, 500); // Delay to show the scroll animation
-        });
-    </script>
 </body>
+<script>
+    document.querySelector('.burger-menu').addEventListener('click', function () {
+        document.querySelector('.menu-links').classList.toggle('active');
+    });
+
+    document.addEventListener('click', function (event) {
+        const menuLinks = document.querySelector('.menu-links');
+        const burgerMenu = document.querySelector('.burger-menu');
+
+        if (!menuLinks.contains(event.target) && !burgerMenu.contains(event.target)) {
+            menuLinks.classList.remove('active');
+        }
+    });
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+        setTimeout(function () {
+            document.body.classList.add('loaded');
+        }, 500); // Delay to show the scroll animation
+    });
+</script>
 
 </html>

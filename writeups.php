@@ -2,7 +2,7 @@
 session_start();
 @$username = $_SESSION['username'];
 // Database connection
-$conn = mysqli_connect("localhost", "root", "", "bracken");
+$conn = mysqli_connect("localhost", "modermom_bracken", "Bracken@2024", "modermom_bracken");
 
 // Fetch data from the writeup table
 $query = "SELECT name, title, link, picture FROM writeup";
@@ -92,11 +92,20 @@ $result = mysqli_query($conn, $query);
         © 2024 Bracken. All rights reserved.
     </footer>
 
-    <script>
-        document.querySelector('.burger-menu').addEventListener('click', function () {
-            document.querySelector('.menu-links').classList.toggle('active');
-        });
-    </script>
 </body>
+<script>
+    document.querySelector('.burger-menu').addEventListener('click', function () {
+        document.querySelector('.menu-links').classList.toggle('active');
+    });
+
+    document.addEventListener('click', function (event) {
+        const menuLinks = document.querySelector('.menu-links');
+        const burgerMenu = document.querySelector('.burger-menu');
+
+        if (!menuLinks.contains(event.target) && !burgerMenu.contains(event.target)) {
+            menuLinks.classList.remove('active');
+        }
+    });
+</script>
 
 </html>

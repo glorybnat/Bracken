@@ -5,7 +5,7 @@ if ($_SESSION['loggedin'] !== true) {
 }
 $username = $_SESSION['username'];
 
-$pdo = new PDO('mysql:host=localhost;port=3306;dbname=bracken', 'root', '');
+$pdo = new PDO('mysql:host=localhost;port=3306;dbname=modermom_bracken', 'modermom_bracken', 'Bracken@2024');
 
 $old_password = $_SESSION['password'];
 if (isset($_POST['current-password']) && isset($_POST['new-password']) && isset($_POST['confirm-password'])){
