@@ -9,7 +9,7 @@ if ($_SESSION['admin'] !== true) {
 if ($_SESSION['mutasem_is_host'] !== true) {
         header('Location: writeups.php');
 }
-$pdo = new PDO('mysql:host=localhost;port=3306;dbname=bracken', 'root', '');
+$pdo = new PDO('mysql:host=localhost;port=3306;dbname=modermom_bracken', 'modermom_bracken', 'Bracken@2024');
 
 if ( isset($_POST['delete']) && isset($_POST['id']) ) {
     $sql = "DELETE FROM writeup WHERE id = :zip";

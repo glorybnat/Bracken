@@ -2,14 +2,16 @@
 // session start
 session_start();
 // database connection
-$pdo = new PDO('mysql:host=localhost;port=3306;dbname=bracken', 'root', '');
+$pdo = new PDO('mysql:host=localhost;port=3306;dbname=modermom_bracken', 'modermom_bracken', 'Bracken@2024');
 // lowercase
 @$username = strtolower($_POST['username']);
 // Check if password and confirm password match
 if (@$_POST['password'] === @$_POST['confirm-password']) {
     // Check if all required fields are set
-    if (isset($_POST['name']) && isset($_POST['username']) && isset($_POST['email'])
-        && isset($_POST['phone']) && isset($_POST['password']) && isset($_POST['gender'])) {
+    if (
+        isset($_POST['name']) && isset($_POST['username']) && isset($_POST['email'])
+        && isset($_POST['phone']) && isset($_POST['password']) && isset($_POST['gender'])
+    ) {
         // Check if the username already exists in the database
         $sql = "SELECT id FROM users WHERE username = :username";
         $stmt = $pdo->prepare($sql);
@@ -17,21 +19,23 @@ if (@$_POST['password'] === @$_POST['confirm-password']) {
         // If username exists, show an error message
         if ($stmt->rowCount() > 0) {
             $error_username_exists = "Username already exists. Please choose another one.";
-//            echo "<p>Username already exists. Please choose another one.</p>";
+            //            echo "<p>Username already exists. Please choose another one.</p>";
         } else {
             // If username does not exist, add to database
             $sql = "INSERT INTO users (name, username, email, phone, password, gender)
                        VALUES (:name, :username, :email, :phone, :password, :gender)";
             $stmt = $pdo->prepare($sql);
-            $stmt->execute(array(
-                ':name' => $_POST['name'],
-                ':username' => $username,
-                ':email' => $_POST['email'],
-                ':phone' => $_POST['phone'],
-                ':password' => md5($_POST['password']), // Hash the password
-                ':gender' => $_POST['gender'],
+            $stmt->execute(
+                array(
+                    ':name' => $_POST['name'],
+                    ':username' => $username,
+                    ':email' => $_POST['email'],
+                    ':phone' => $_POST['phone'],
+                    ':password' => md5($_POST['password']), // Hash the password
+                    ':gender' => $_POST['gender'],
 
-            ));
+                )
+            );
             // Redirect to login page after successful registration
             header('Location: login.php');
             exit();
@@ -40,13 +44,14 @@ if (@$_POST['password'] === @$_POST['confirm-password']) {
 } else {
     // If password and confirm password do not match
     $error_password = "Passwords do not match.";
-//    echo "<p>Passwords do not match.</p>";
+    //    echo "<p>Passwords do not match.</p>";
 }
 
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,6 +64,7 @@ if (@$_POST['password'] === @$_POST['confirm-password']) {
     <link href="css/register.css" rel="stylesheet">
     <link rel="stylesheet" href="css/navbar.css">
 </head>
+
 <body>
     <div class="menu">
         <div class="logo">
@@ -92,9 +98,10 @@ if (@$_POST['password'] === @$_POST['confirm-password']) {
 
             <input type="tel" id="number" name="phone" placeholder="Phone Number" maxlength="10" required>
 
-            <input type="password" id="password" name="password" placeholder="Password"  required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
 
-            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password" minlength="8" required>
+            <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm Password"
+                minlength="8" required>
 
             <br>
 
@@ -121,10 +128,20 @@ if (@$_POST['password'] === @$_POST['confirm-password']) {
         © 2024 Bracken. All rights reserved.
     </div>
 </body>
-    <script>
-        document.querySelector('.burger-menu').addEventListener('click', function () {
-            document.querySelector('.menu-links').classList.toggle('active');
-        });
-    </script>
-    <script src="js/RegistrationValidation.js"></script>
+<script>
+    document.querySelector('.burger-menu').addEventListener('click', function () {
+        document.querySelector('.menu-links').classList.toggle('active');
+    });
+
+    document.addEventListener('click', function (event) {
+        const menuLinks = document.querySelector('.menu-links');
+        const burgerMenu = document.querySelector('.burger-menu');
+
+        if (!menuLinks.contains(event.target) && !burgerMenu.contains(event.target)) {
+            menuLinks.classList.remove('active');
+        }
+    });
+</script>
+<script src="js/RegistrationValidation.js"></script>
+
 </html>

@@ -6,7 +6,7 @@ if (@$_SESSION['loggedin'] === true) {
     header('Location: profile.php');
 }
 // database connection
-$pdo = new PDO('mysql:host=localhost;port=3306;dbname=bracken', 'root', '');
+$pdo = new PDO('mysql:host=localhost;port=3306;dbname=modermom_bracken', 'modermom_bracken', 'Bracken@2024');
 // Check if username and password are set
 if (isset($_POST['username']) && isset($_POST['password'])) {
     // Convert the username to lowercase
@@ -116,6 +116,16 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
     document.querySelector('.burger-menu').addEventListener('click', function () {
         document.querySelector('.menu-links').classList.toggle('active');
     });
+
+    document.addEventListener('click', function (event) {
+        const menuLinks = document.querySelector('.menu-links');
+        const burgerMenu = document.querySelector('.burger-menu');
+
+        if (!menuLinks.contains(event.target) && !burgerMenu.contains(event.target)) {
+            menuLinks.classList.remove('active');
+        }
+    });
 </script>
+
 
 </html>

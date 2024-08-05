@@ -6,7 +6,7 @@ if ($_SESSION['loggedin'] !== true) {
 
 $old_email = $_SESSION['email'];
 $username = $_SESSION['username'];
-$pdo = new PDO('mysql:host=localhost;port=3306;dbname=bracken', 'root', '');
+$pdo = new PDO('mysql:host=localhost;port=3306;dbname=modermom_bracken', 'modermom_bracken', 'Bracken@2024');
 if (isset($_POST['current-email']) && isset($_POST['new-email']) && isset($_POST['confirm-email'])){
     $current_email = $_POST['current-email'];
     $new_email = $_POST['new-email'];
